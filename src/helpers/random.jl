@@ -225,6 +225,7 @@ return a (Gaussian) random vector from the tangent space $T_p\mathrm{Gr}(n,k)$ w
 zero and standard deviation `σ` by projecting a random Matrix onto the  `p`.
 """
 function random_tangent(M::Grassmann, p, ::Val{:Gaussian}, σ::Float64=1.0)
+    manifold_dimension(M) == 0 && return zero_vector(M,p)
     Z = σ * randn(eltype(p), size(p))
     X = project(M, p, Z)
     X = X ./ norm(X)
