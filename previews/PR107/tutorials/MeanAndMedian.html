@@ -26,11 +26,11 @@ gradF(M, y) = sum(1 / n * grad_distance.(Ref(M), data, Ref(y)))</code></pre><p>n
 # 2      | x: [0.7917377109136624, 0.09720922045898238, 0.603076914311061] | Last Change: 0.020336 | F(x): 0.149029
 # 3      | x: [0.792283271084327, 0.0977159913287459, 0.6022780117176446] | Last Change: 0.001092 | F(x): 0.149029
 # 4      | x: [0.7923155575566623, 0.0977379000751398, 0.6022319819991105] | Last Change: 0.000060 | F(x): 0.149029
-# 5      | x: [0.7923174650259398, 0.09773883592992508, 0.6022293205797368] | Last Change: 0.000003 | F(x): 0.149029
+# 5      | x: [0.7923174650259398, 0.09773883592992506, 0.6022293205797368] | Last Change: 0.000003 | F(x): 0.149029
 # 6      | x: [0.7923175775065069, 0.09773887521445883, 0.6022291662199968] | Last Change: 0.000000 | F(x): 0.149029
-# 7      | x: [0.7923175841297168, 0.09773887682107817, 0.6022291572454814] | Last Change: 0.000000 | F(x): 0.149029
-# 8      | x: [0.792317584519285, 0.09773887688413525, 0.6022291567227154] | Last Change: 0.000000 | F(x): 0.149029
-The algorithm reached approximately critical point after 8 iterations; the gradient norm (6.549992173466581e-10) is less than 1.0e-8.</code></pre><p>A way to get better performance and for convex and coercive costs a guaranteed convergence is to switch the default <a href="../plans/index.html#Manopt.ConstantStepsize"><code>ConstantStepsize</code></a>(1.0) with a step size that performs better, for example the <a href="../plans/index.html#Manopt.ArmijoLinesearch"><code>ArmijoLinesearch</code></a>(). We can tweak the default values for the contractionFactor and the sufficientDecrease beyond constant step size which is already quite fast.  This gives</p><pre><code class="language-julia">xMean2 = gradient_descent(
+# 7      | x: [0.7923175841297168, 0.09773887682107818, 0.6022291572454814] | Last Change: 0.000000 | F(x): 0.149029
+# 8      | x: [0.792317584519285, 0.09773887688413527, 0.6022291567227154] | Last Change: 0.000000 | F(x): 0.149029
+The algorithm reached approximately critical point after 8 iterations; the gradient norm (6.549992260414836e-10) is less than 1.0e-8.</code></pre><p>A way to get better performance and for convex and coercive costs a guaranteed convergence is to switch the default <a href="../plans/index.html#Manopt.ConstantStepsize"><code>ConstantStepsize</code></a>(1.0) with a step size that performs better, for example the <a href="../plans/index.html#Manopt.ArmijoLinesearch"><code>ArmijoLinesearch</code></a>(). We can tweak the default values for the contractionFactor and the sufficientDecrease beyond constant step size which is already quite fast.  This gives</p><pre><code class="language-julia">xMean2 = gradient_descent(
     M,
     F,
     gradF,
@@ -38,9 +38,9 @@ The algorithm reached approximately critical point after 8 iterations; the gradi
     stepsize=ArmijoLinesearch(1.0, ExponentialRetraction(), 0.99, 0.5),
     debug=[:Iteration, &quot; | &quot;, :x, &quot; | &quot;, :Change, &quot; | &quot;, :Cost, &quot;\n&quot;, :Stop],
 )</code></pre><pre><code class="language-none">3-element Vector{Float64}:
- 0.7923175845228506
- 0.09773887688885884
- 0.6022291567172583</code></pre><p>which finishes in 5 steaps, just slightly better than the previous computation.</p><pre><code class="language-julia">F(M, xMean) - F(M, xMean2)</code></pre><pre><code class="language-none">3.3306690738754696e-16</code></pre><p>Note that other optimization tasks may have other speedup opportunities.</p><p>For even more precision, we can further require a smaller gradient norm. This is done by changing the <a href="../solvers/index.html#Manopt.StoppingCriterion"><code>StoppingCriterion</code></a> used, where several criteria can be combined using <code>&amp;</code> and/or <code>|</code>.  If we want to decrease the final gradient (from less that 1e-8) norm but keep the maximal number of iterations to be 200, we can run</p><pre><code class="language-julia">xMean3 = gradient_descent(
+ 0.7923175844625908
+ 0.09773887689188214
+ 0.6022291567960479</code></pre><p>which finishes in 5 steaps, just slightly better than the previous computation.</p><pre><code class="language-julia">F(M, xMean) - F(M, xMean2)</code></pre><pre><code class="language-none">3.3306690738754696e-16</code></pre><p>Note that other optimization tasks may have other speedup opportunities.</p><p>For even more precision, we can further require a smaller gradient norm. This is done by changing the <a href="../solvers/index.html#Manopt.StoppingCriterion"><code>StoppingCriterion</code></a> used, where several criteria can be combined using <code>&amp;</code> and/or <code>|</code>.  If we want to decrease the final gradient (from less that 1e-8) norm but keep the maximal number of iterations to be 200, we can run</p><pre><code class="language-julia">xMean3 = gradient_descent(
     M,
     F,
     gradF,
@@ -49,9 +49,9 @@ The algorithm reached approximately critical point after 8 iterations; the gradi
     stopping_criterion=StopAfterIteration(200) | StopWhenGradientNormLess(1e-15),
     debug=[:Iteration, &quot; | &quot;, :x, &quot; | &quot;, :Change, &quot; | &quot;, :Cost, &quot;\n&quot;, :Stop],
 )</code></pre><pre><code class="language-none">3-element Vector{Float64}:
- 0.7923175845436087
- 0.09773887688651484
- 0.6022291566903286</code></pre><p>which takes 10 iterations but gets a very small gradient, and not much is gained in the cost itself</p><pre><code class="language-julia">F(M, xMean2) - F(M, xMean3)</code></pre><pre><code class="language-none">0.0</code></pre><pre><code class="language-julia">asymptote_export_S2_signals(&quot;startDataCenterMean.asy&quot;;
+ 0.7923175845436088
+ 0.09773887688651485
+ 0.6022291566903287</code></pre><p>which takes 10 iterations but gets a very small gradient, and not much is gained in the cost itself</p><pre><code class="language-julia">F(M, xMean2) - F(M, xMean3)</code></pre><pre><code class="language-none">1.3877787807814457e-16</code></pre><pre><code class="language-julia">asymptote_export_S2_signals(&quot;startDataCenterMean.asy&quot;;
     points = [ [x], data, [xMean] ],
     colors=Dict(:points =&gt; [TolVibrantBlue, TolVibrantTeal, TolVibrantOrange]),
     dot_size = 3.5, camera_position = (1.,.5,.5)
@@ -68,32 +68,32 @@ proxes = Function[(M, λ, y) -&gt; prox_distance(M, λ / n, di, y, 1) for di in 
 )
 xMedian = get_solver_result(o)
 values = get_record(o)</code></pre><pre><code class="language-none">Initial | x: [0.5737338264338113, -0.1728651513118652, 0.8005917410687816] |  | F(x): 0.298680
-# 50     | x: [0.7897340334179458, 0.07829927185150312, 0.608431902918448] | Last Change: 0.080252 | F(x): 0.245454
-# 100    | x: [0.7899680461384707, 0.0786029490954357, 0.6080888606722517] | Last Change: 0.000493 | F(x): 0.245454
-# 150    | x: [0.790036413163267, 0.07868191382352602, 0.6079898208960562] | Last Change: 0.000139 | F(x): 0.245454
-# 200    | x: [0.7900676764403393, 0.0787154178585569, 0.6079448573970901] | Last Change: 0.000062 | F(x): 0.245454
-# 250    | x: [0.7900851818616217, 0.07873311977053307, 0.6079198148226581] | Last Change: 0.000034 | F(x): 0.245454
+# 50     | x: [0.7897340334179458, 0.07829927185150307, 0.608431902918448] | Last Change: 0.080252 | F(x): 0.245454
+# 100    | x: [0.7899680461384705, 0.0786029490954357, 0.6080888606722519] | Last Change: 0.000493 | F(x): 0.245454
+# 150    | x: [0.7900364131632669, 0.07868191382352603, 0.6079898208960564] | Last Change: 0.000139 | F(x): 0.245454
+# 200    | x: [0.7900676764403387, 0.07871541785855693, 0.6079448573970903] | Last Change: 0.000062 | F(x): 0.245454
+# 250    | x: [0.7900851818616215, 0.07873311977053304, 0.607919814822658] | Last Change: 0.000034 | F(x): 0.245454
 The algorithm performed a step with a change (0.0) less than 1.0e-12.</code></pre><p>where the differences to <a href="../solvers/gradient_descent.html#Manopt.gradient_descent"><code>gradient_descent</code></a> are as follows</p><ul><li>the third parameter is now an Array of proximal maps</li><li>debug is reduces to only every 50th iteration</li><li>we further activated a <a href="../plans/index.html#Manopt.RecordAction"><code>RecordAction</code></a> using the <code>record=</code> optional parameter. These work very similar to those in debug, but they collect their data in an array. The high level interface then returns two variables; the <code>values</code> do contain an array of recorded datum per iteration. Here a Tuple containing the iteration, last change and cost respectively; see <a href="../plans/index.html#Manopt.RecordGroup"><code>RecordGroup</code></a>, <a href="../plans/index.html#Manopt.RecordIteration"><code>RecordIteration</code></a>, <a href="../plans/index.html#Manopt.RecordChange"><code>RecordChange</code></a>, <a href="../plans/index.html#Manopt.RecordCost"><code>RecordCost</code></a> as well as the <a href="../plans/index.html#Manopt.RecordFactory-Tuple{Options, Vector{var&quot;#s10&quot;} where var&quot;#s10&quot;}"><code>RecordFactory</code></a> for details. The <code>values</code> contains hence a tuple per iteration, that itself consists of (by order of specification) the iteration number, the last change and the cost function value.</li></ul><p>These recorded entries read</p><pre><code class="language-julia">values</code></pre><pre><code class="language-none">254-element Vector{Tuple{Int64, Float64, Float64}}:
- (1, 0.0, 0.2476570982176944)
- (2, 0.03915137245269646, 0.24599998171726195)
- (3, 0.014699094618098311, 0.24568197834842026)
- (4, 0.0075130396403671924, 0.2455730592919036)
- (5, 0.0044893480449786525, 0.2455249161082335)
- (6, 0.002953601317596155, 0.24550007064482604)
- (7, 0.0020748587403644106, 0.24548583414095707)
- (8, 0.0015286431209686094, 0.2454770356861027)
- (9, 0.001167743288968188, 0.2454712772782416)
- (10, 0.0009178169876077584, 0.24546733510439245)
+ (1, 0.0, 0.24765709821769374)
+ (2, 0.03915137245266526, 0.24599998171726126)
+ (3, 0.014699094618037886, 0.24568197834841984)
+ (4, 0.007513039640263751, 0.24557305929190304)
+ (5, 0.004489348044805541, 0.24552491610823293)
+ (6, 0.002953601317333033, 0.24550007064482557)
+ (7, 0.0020748587400968685, 0.24548583414095682)
+ (8, 0.0015286431206780972, 0.24547703568610252)
+ (9, 0.0011677432888731137, 0.24547127727824178)
+ (10, 0.0009178169878496853, 0.2454673351043927)
  ⋮
- (246, 3.175031505921871e-7, 0.24545401932704827)
- (247, 2.976504617249705e-7, 0.24545401929389435)
- (248, 2.846862848779986e-7, 0.24545401926124036)
- (249, 2.669762502188827e-7, 0.24545401922907215)
- (250, 2.269677253324963e-7, 0.2454540191973801)
- (251, 1.659323085197815e-7, 0.24545401916615991)
- (252, 1.0745380149674388e-7, 0.2454540191354066)
- (253, 7.300048299977716e-8, 0.24545401910510922)
- (254, 0.0, 0.2454540190752502)</code></pre><p>The resulting median and mean for the data hence are</p><pre><code class="language-julia">asymptote_export_S2_signals(&quot;startDataCenterMean.asy&quot;;
+ (246, 3.18550442553044e-7, 0.2454540193270485)
+ (247, 2.9876735293512787e-7, 0.24545401929389457)
+ (248, 2.8585383434967613e-7, 0.24545401926124058)
+ (249, 2.682209014892586e-7, 0.2454540192290724)
+ (250, 2.2891598188485577e-7, 0.24545401919738047)
+ (251, 1.6858739404357632e-7, 0.24545401916616028)
+ (252, 1.1151007970493862e-7, 0.24545401913540696)
+ (253, 7.884953353001449e-8, 0.24545401910510958)
+ (254, 0.0, 0.24545401907525052)</code></pre><p>The resulting median and mean for the data hence are</p><pre><code class="language-julia">asymptote_export_S2_signals(&quot;startDataCenterMean.asy&quot;;
     points = [ [x], data, [xMean], [xMedian] ],
     colors=Dict(:points =&gt; [TolVibrantBlue, TolVibrantTeal, TolVibrantOrange, TolVibrantMagenta]),
     dot_size = 3.5, camera_position = (1.,.5,.5)
@@ -111,4 +111,4 @@ render_asymptote(&quot;startDataCenterMedianAndMean.asy&quot;; render = 2)</code
    pp. 2230–2260.
    doi: <a href="https://doi.org/10.1137/12086282X">10.1137/12086282X</a>,
    arxiv: <a href="https://arxiv.org/abs/1201.0925">1201.0925</a></li>
-</ul></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../about.html">« About</a><a class="docs-footer-nextpage" href="Benchmark.html">speed up! using <code>gradF!</code> »</a></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> on <span class="colophon-date" title="Saturday 26 March 2022 08:46">Saturday 26 March 2022</span>. Using Julia version 1.6.5.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+</ul></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../about.html">« About</a><a class="docs-footer-nextpage" href="Benchmark.html">speed up! using <code>gradF!</code> »</a></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> on <span class="colophon-date" title="Saturday 26 March 2022 09:07">Saturday 26 March 2022</span>. Using Julia version 1.6.5.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>

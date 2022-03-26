@@ -23,7 +23,7 @@ render_asymptote(&quot;jacobiGeodesic.asy&quot;; render = 2)</code></pre><p><img
  [-0.14106846055019354, 0.1941640786499874, 0.4045084971874737]
  [-0.1414213562373095, 0.14142135623730953, 0.35355339059327373]
  [-0.1294427190999916, 0.09404564036679572, 0.29389262614623657]
- [-0.10692078290260418, 0.05447885996874562, 0.2269952498697734]
+ [-0.10692078290260415, 0.05447885996874564, 0.2269952498697734]
  [-0.07608452130361228, 0.024721359549995783, 0.15450849718747367]
  [-0.039507533623805505, 0.006257378601609233, 0.07821723252011542]
  [0.0, 0.0, 0.0]</code></pre><p>which can also be called using <a href="../functions/differentials.html#Manopt.differential_geodesic_startpoint-Tuple{AbstractManifold, Any, Any, Any, Any}"><code>differential_geodesic_startpoint</code></a>. We can add to the image above by creating extended tangent vectors the include their base points</p><pre><code class="language-julia">V = [Tuple([a, b]) for (a, b) in zip(r, W)]</code></pre><pre><code class="language-none">11-element Vector{Tuple{Vector{Float64}, Vector{Float64}}}:
@@ -34,7 +34,7 @@ render_asymptote(&quot;jacobiGeodesic.asy&quot;; render = 2)</code></pre><p><img
  ([0.8090169943749475, 0.5877852522924731, 0.0], [-0.14106846055019354, 0.1941640786499874, 0.4045084971874737])
  ([0.7071067811865476, 0.7071067811865475, 0.0], [-0.1414213562373095, 0.14142135623730953, 0.35355339059327373])
  ([0.5877852522924731, 0.8090169943749475, 0.0], [-0.1294427190999916, 0.09404564036679572, 0.29389262614623657])
- ([0.45399049973954686, 0.8910065241883678, 0.0], [-0.10692078290260418, 0.05447885996874562, 0.2269952498697734])
+ ([0.45399049973954686, 0.8910065241883678, 0.0], [-0.10692078290260415, 0.05447885996874564, 0.2269952498697734])
  ([0.30901699437494745, 0.9510565162951536, 0.0], [-0.07608452130361228, 0.024721359549995783, 0.15450849718747367])
  ([0.15643446504023092, 0.9876883405951378, 0.0], [-0.039507533623805505, 0.006257378601609233, 0.07821723252011542])
  ([6.123233995736766e-17, 1.0, 0.0], [0.0, 0.0, 0.0])</code></pre><p>and add that as one further set to the Asymptote export.</p><pre><code class="language-julia">asymptote_export_S2_signals(&quot;jacobiGeodesicdifferential_geodesic_startpoint.asy&quot;;
@@ -57,7 +57,7 @@ V2 = [Tuple([a, b]) for (a, b) in zip(r, W2)]</code></pre><pre><code class="lang
  ([0.8090169943749475, 0.5877852522924731, 0.0], [0.04702282018339786, -0.0647213595499958, -0.29389262614623657])
  ([0.7071067811865476, 0.7071067811865475, 0.0], [0.07071067811865477, -0.07071067811865475, -0.35355339059327373])
  ([0.5877852522924731, 0.8090169943749475, 0.0], [0.0970820393249937, -0.07053423027509677, -0.4045084971874737])
- ([0.45399049973954686, 0.8910065241883678, 0.0], [0.1247409133863715, -0.06355866996353654, -0.4455032620941839])
+ ([0.45399049973954686, 0.8910065241883678, 0.0], [0.12474091338637147, -0.06355866996353655, -0.4455032620941839])
  ([0.30901699437494745, 0.9510565162951536, 0.0], [0.1521690426072246, -0.04944271909999159, -0.47552825814757677])
  ([0.15643446504023092, 0.9876883405951378, 0.0], [0.17778390130712482, -0.028158203707241553, -0.4938441702975689])
  ([6.123233995736766e-17, 1.0, 0.0], [0.2, 0.0, -0.5])</code></pre><p>and we can combine both keeping the base point</p><pre><code class="language-julia">V3 = [Tuple([a, b]) for (a, b) in zip(r, W2 + W)]</code></pre><pre><code class="language-none">11-element Vector{Tuple{Vector{Float64}, Vector{Float64}}}:
@@ -89,4 +89,4 @@ render_asymptote(&quot;jacobiGeodesicResult.asy&quot;; render = 2)</code></pre><
   fitting on manifolds by minimizing the acceleration of a Bézier curve</emph>,
   Frontiers in Applied Mathematics and Statistics, 2018.
   doi: <a href="https://dx.doi.org/10.3389/fams.2018.00059">10.3389/fams.2018.00059</a></li>
-</ul></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="GradientOfSecondOrderDifference.html">« see the gradient of <span>$d_2$</span></a><a class="docs-footer-nextpage" href="../pluto/AutomaticDifferentiation.html">AD in Manopt »</a></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> on <span class="colophon-date" title="Saturday 26 March 2022 08:46">Saturday 26 March 2022</span>. Using Julia version 1.6.5.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+</ul></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="GradientOfSecondOrderDifference.html">« see the gradient of <span>$d_2$</span></a><a class="docs-footer-nextpage" href="../pluto/AutomaticDifferentiation.html">AD in Manopt »</a></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> on <span class="colophon-date" title="Saturday 26 March 2022 09:07">Saturday 26 March 2022</span>. Using Julia version 1.6.5.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
