@@ -51,7 +51,7 @@ b = B[2].pts
 # On Euclidean spaces Bézier curves of these $n=4$ so called control points like this segment yield polynomials of degree $3$.
 # The resulting curve $\gamma: [0,1] → ℝ^m$ is called [Bezier curve](https://en.wikipedia.org/wiki/Bézier_curve) or Bézier spline and is named after [Piérre Bezier](https://en.wikipedia.org/wiki/Pierre_Bézier) (1910–1999).
 # They can be evaluated by the de Casteljau algorithm by evaluating line segments between points.
-# While it is not easy to evaluate polynomials on a manifold, evaluating line segments generalizes to the evaluation of [`shortest_geodesic`](https://juliamanifolds.github.io/Manifolds.jl/latest/interface.html#ManifoldsBase.shortest_geodesic-Tuple{Manifold,Any,Any})s
+# While it is not easy to evaluate polynomials on a manifold, evaluating line segments generalizes to the evaluation of [`shortest_geodesic`](https://juliamanifolds.github.io/ManifoldsBase.jl/stable/functions.html#ManifoldsBase.shortest_geodesic-Tuple{AbstractManifold,%20Any,%20Any})s
 #
 # We will illustrate this using these points $b=(b_1,b_2,b_3,b_4)$ on the [`Sphere`](https://juliamanifolds.github.io/Manifolds.jl/latest/manifolds/sphere.html) $\mathbb S^2$.
 # Let's evaliuate this at the point $t=\frac{1}{4}∈[0,1]$. We first compute

@@ -17,7 +17,7 @@ end
 @doc raw"""
     random_point(M::AbstractPowerManifold, options...)
 
-generate a random point on the `AbstractPowerManifold` `M` given `options` that are
+generate a random point on the [`AbstractManifold`](https://juliamanifolds.github.io/ManifoldsBase.jl/stable/manifolds.html#ManifoldsBase.AbstractPowerManifold) `M` given `options` that are
 passed on.
 """
 function random_point(
