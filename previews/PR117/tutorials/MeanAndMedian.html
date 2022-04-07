@@ -38,9 +38,9 @@ The algorithm reached approximately critical point after 8 iterations; the gradi
     stepsize=ArmijoLinesearch(1.0, ExponentialRetraction(), 0.99, 0.5),
     debug=[:Iteration, &quot; | &quot;, :x, &quot; | &quot;, :Change, &quot; | &quot;, :Cost, &quot;\n&quot;, :Stop],
 )</code></pre><pre><code class="language-none">3-element Vector{Float64}:
- 0.7923175844625908
- 0.09773887689188214
- 0.6022291567960479</code></pre><p>which finishes in 5 steaps, just slightly better than the previous computation.</p><pre><code class="language-julia">F(M, xMean) - F(M, xMean2)</code></pre><pre><code class="language-none">3.3306690738754696e-16</code></pre><p>Note that other optimization tasks may have other speedup opportunities.</p><p>For even more precision, we can further require a smaller gradient norm. This is done by changing the <a href="../solvers/index.html#Manopt.StoppingCriterion"><code>StoppingCriterion</code></a> used, where several criteria can be combined using <code>&amp;</code> and/or <code>|</code>.  If we want to decrease the final gradient (from less that 1e-8) norm but keep the maximal number of iterations to be 200, we can run</p><pre><code class="language-julia">xMean3 = gradient_descent(
+ 0.7923175845434248
+ 0.09773887689071525
+ 0.6022291566898887</code></pre><p>which finishes in 5 steaps, just slightly better than the previous computation.</p><pre><code class="language-julia">F(M, xMean) - F(M, xMean2)</code></pre><pre><code class="language-none">3.3306690738754696e-16</code></pre><p>Note that other optimization tasks may have other speedup opportunities.</p><p>For even more precision, we can further require a smaller gradient norm. This is done by changing the <a href="../solvers/index.html#Manopt.StoppingCriterion"><code>StoppingCriterion</code></a> used, where several criteria can be combined using <code>&amp;</code> and/or <code>|</code>.  If we want to decrease the final gradient (from less that 1e-8) norm but keep the maximal number of iterations to be 200, we can run</p><pre><code class="language-julia">xMean3 = gradient_descent(
     M,
     F,
     gradF,
@@ -50,8 +50,8 @@ The algorithm reached approximately critical point after 8 iterations; the gradi
     debug=[:Iteration, &quot; | &quot;, :x, &quot; | &quot;, :Change, &quot; | &quot;, :Cost, &quot;\n&quot;, :Stop],
 )</code></pre><pre><code class="language-none">3-element Vector{Float64}:
  0.7923175845436088
- 0.09773887688651485
- 0.6022291566903287</code></pre><p>which takes 10 iterations but gets a very small gradient, and not much is gained in the cost itself</p><pre><code class="language-julia">F(M, xMean2) - F(M, xMean3)</code></pre><pre><code class="language-none">1.3877787807814457e-16</code></pre><pre><code class="language-julia">asymptote_export_S2_signals(&quot;startDataCenterMean.asy&quot;;
+ 0.09773887688651482
+ 0.6022291566903285</code></pre><p>which takes 10 iterations but gets a very small gradient, and not much is gained in the cost itself</p><pre><code class="language-julia">F(M, xMean2) - F(M, xMean3)</code></pre><pre><code class="language-none">2.7755575615628914e-17</code></pre><pre><code class="language-julia">asymptote_export_S2_signals(&quot;startDataCenterMean.asy&quot;;
     points = [ [x], data, [xMean] ],
     colors=Dict(:points =&gt; [TolVibrantBlue, TolVibrantTeal, TolVibrantOrange]),
     dot_size = 3.5, camera_position = (1.,.5,.5)
@@ -111,4 +111,4 @@ render_asymptote(&quot;startDataCenterMedianAndMean.asy&quot;; render = 2)</code
    pp. 2230–2260.
    doi: <a href="https://doi.org/10.1137/12086282X">10.1137/12086282X</a>,
    arxiv: <a href="https://arxiv.org/abs/1201.0925">1201.0925</a></li>
-</ul></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../about.html">« About</a><a class="docs-footer-nextpage" href="Benchmark.html">speed up! using <code>gradF!</code> »</a></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> on <span class="colophon-date" title="Saturday 2 April 2022 17:45">Saturday 2 April 2022</span>. Using Julia version 1.6.6.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+</ul></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../about.html">« About</a><a class="docs-footer-nextpage" href="Benchmark.html">speed up! using <code>gradF!</code> »</a></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> on <span class="colophon-date" title="Thursday 7 April 2022 09:11">Thursday 7 April 2022</span>. Using Julia version 1.6.6.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
