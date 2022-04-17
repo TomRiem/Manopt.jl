@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>AD in Manopt · Manopt.jl</title><script data-outdated-warner src="../../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.039/juliamono-regular.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.11/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../../assets/documenter.js"></script><script src="../../siteinfo.js"></script><script src="../../../versions.js"></script><script src="../../../copy.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../../assets/themeswap.js"></script></head><body><div id="documenter"><nav class="docs-sidebar"><a class="docs-logo" href="../../"><img src="../../assets/logo.png" alt="Manopt.jl logo"/></a><div class="docs-package-name"><span class="docs-autofit"><a href="../../">Manopt.jl</a></span></div><form class="docs-search" action="../../search/"><input class="docs-search-query" id="documenter-search-query" name="q" type="text" placeholder="Search docs"/></form><ul class="docs-menu"><li><a class="tocitem" href="../../">Home</a></li><li><a class="tocitem" href="../../about/">About</a></li><li><span class="tocitem">How to...</span><ul><li><a class="tocitem" href="../../tutorials/MeanAndMedian/">get Started: Optimize!</a></li><li><a class="tocitem" href="../../tutorials/GeodesicRegression/">Do Geodesic regression</a></li><li><a class="tocitem" href="../../tutorials/HowToRecord/">Record values</a></li><li><a class="tocitem" href="../../tutorials/StochasticGradientDescent/">do stochastic gradient descent</a></li><li><a class="tocitem" href="../../tutorials/GradientOfSecondOrderDifference/">see the gradient of <span>$d_2$</span></a></li><li><a class="tocitem" href="../../tutorials/JacobiFields/">use Jacobi Fields</a></li><li><a class="tocitem" href="../Benchmark/">speed up! using <code>gradF!</code></a></li><li><a class="tocitem" href="../Bezier/">Use Bezier Curves</a></li><li class="is-active"><a class="tocitem" href>AD in Manopt</a></li></ul></li><li><a class="tocitem" href="../../plans/">Plans</a></li><li><span class="tocitem">Solvers</span><ul><li><a class="tocitem" href="../../solvers/">Introduction</a></li><li><a class="tocitem" href="../../solvers/alternating_gradient_descent/">Alternating Gradient Descent</a></li><li><a class="tocitem" href="../../solvers/ChambollePock/">Chambolle-Pock</a></li><li><a class="tocitem" href="../../solvers/conjugate_gradient_descent/">Conjugate gradient descent</a></li><li><a class="tocitem" href="../../solvers/cyclic_proximal_point/">Cyclic Proximal Point</a></li><li><a class="tocitem" href="../../solvers/DouglasRachford/">Douglas–Rachford</a></li><li><a class="tocitem" href="../../solvers/gradient_descent/">Gradient Descent</a></li><li><a class="tocitem" href="../../solvers/NelderMead/">Nelder–Mead</a></li><li><a class="tocitem" href="../../solvers/particle_swarm/">Particle Swarm Optimization</a></li><li><a class="tocitem" href="../../solvers/quasi_Newton/">Quasi-Newton</a></li><li><a class="tocitem" href="../../solvers/stochastic_gradient_descent/">Stochastic Gradient Descent</a></li><li><a class="tocitem" href="../../solvers/subgradient/">Subgradient method</a></li><li><a class="tocitem" href="../../solvers/truncated_conjugate_gradient_descent/">Steihaug-Toint TCG Method</a></li><li><a class="tocitem" href="../../solvers/trust_regions/">Trust-Regions Solver</a></li></ul></li><li><span class="tocitem">Functions</span><ul><li><a class="tocitem" href="../../functions/">Introduction</a></li><li><a class="tocitem" href="../../functions/bezier/">Bézier curves</a></li><li><a class="tocitem" href="../../functions/costs/">Cost functions</a></li><li><a class="tocitem" href="../../functions/differentials/">Differentials</a></li><li><a class="tocitem" href="../../functions/adjointdifferentials/">Adjoint Differentials</a></li><li><a class="tocitem" href="../../functions/gradients/">Gradients</a></li><li><a class="tocitem" href="../../functions/Jacobi_fields/">Jacobi Fields</a></li><li><a class="tocitem" href="../../functions/proximal_maps/">Proximal Maps</a></li><li><a class="tocitem" href="../../functions/manifold/">Specific Manifold Functions</a></li></ul></li><li><span class="tocitem">Helpers</span><ul><li><a class="tocitem" href="../../helpers/data/">Data</a></li><li><a class="tocitem" href="../../helpers/errorMeasures/">Error Measures</a></li><li><a class="tocitem" href="../../helpers/exports/">Exports</a></li></ul></li><li><a class="tocitem" href="../../contributing/">Contributing to Manopt.jl</a></li><li><a class="tocitem" href="../../notation/">Notation</a></li><li><a class="tocitem" href="../../list/">Function Index</a></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><nav class="breadcrumb"><ul class="is-hidden-mobile"><li><a class="is-disabled">How to...</a></li><li class="is-active"><a href>AD in Manopt</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>AD in Manopt</a></li></ul></nav><div class="docs-right"><a class="docs-edit-link" href="https://github.com/JuliaManifolds/Manopt.jl/blob/master/pluto/AutomaticDifferentiation.jl" title="Edit on GitHub"><span class="docs-icon fab"></span><span class="docs-label is-hidden-touch">Edit on GitHub</span></a><a class="docs-settings-button fas fa-cog" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-sidebar-button fa fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a></div></header><article class="content" id="documenter-page"><style>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>AD in Manopt · Manopt.jl</title><script data-outdated-warner src="../../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.039/juliamono-regular.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.11/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../../assets/documenter.js"></script><script src="../../siteinfo.js"></script><script src="../../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../../assets/themeswap.js"></script></head><body><div id="documenter"><nav class="docs-sidebar"><a class="docs-logo" href="../../"><img src="../../assets/logo.png" alt="Manopt.jl logo"/></a><div class="docs-package-name"><span class="docs-autofit"><a href="../../">Manopt.jl</a></span></div><form class="docs-search" action="../../search/"><input class="docs-search-query" id="documenter-search-query" name="q" type="text" placeholder="Search docs"/></form><ul class="docs-menu"><li><a class="tocitem" href="../../">Home</a></li><li><a class="tocitem" href="../../about/">About</a></li><li><span class="tocitem">How to...</span><ul><li><a class="tocitem" href="../Optimize!/">Get started: Optimize!</a></li><li><a class="tocitem" href="../HowToRecord/">How to record values</a></li><li><a class="tocitem" href="../GeodesicRegression/">Do Geodesic regression</a></li><li><a class="tocitem" href="../SecondOrderDifference/">Compute a second order difference</a></li><li><a class="tocitem" href="../Benchmark/">speed up! using <code>gradF!</code></a></li><li><a class="tocitem" href="../Bezier/">Use Bezier Curves</a></li><li class="is-active"><a class="tocitem" href>AD in Manopt</a></li><li><a class="tocitem" href="../../tutorials/StochasticGradientDescent/">do stochastic gradient descent</a></li><li><a class="tocitem" href="../../tutorials/JacobiFields/">use Jacobi Fields</a></li></ul></li><li><a class="tocitem" href="../../plans/">Plans</a></li><li><span class="tocitem">Solvers</span><ul><li><a class="tocitem" href="../../solvers/">Introduction</a></li><li><a class="tocitem" href="../../solvers/alternating_gradient_descent/">Alternating Gradient Descent</a></li><li><a class="tocitem" href="../../solvers/ChambollePock/">Chambolle-Pock</a></li><li><a class="tocitem" href="../../solvers/conjugate_gradient_descent/">Conjugate gradient descent</a></li><li><a class="tocitem" href="../../solvers/cyclic_proximal_point/">Cyclic Proximal Point</a></li><li><a class="tocitem" href="../../solvers/DouglasRachford/">Douglas–Rachford</a></li><li><a class="tocitem" href="../../solvers/gradient_descent/">Gradient Descent</a></li><li><a class="tocitem" href="../../solvers/NelderMead/">Nelder–Mead</a></li><li><a class="tocitem" href="../../solvers/particle_swarm/">Particle Swarm Optimization</a></li><li><a class="tocitem" href="../../solvers/quasi_Newton/">Quasi-Newton</a></li><li><a class="tocitem" href="../../solvers/stochastic_gradient_descent/">Stochastic Gradient Descent</a></li><li><a class="tocitem" href="../../solvers/subgradient/">Subgradient method</a></li><li><a class="tocitem" href="../../solvers/truncated_conjugate_gradient_descent/">Steihaug-Toint TCG Method</a></li><li><a class="tocitem" href="../../solvers/trust_regions/">Trust-Regions Solver</a></li></ul></li><li><span class="tocitem">Functions</span><ul><li><a class="tocitem" href="../../functions/">Introduction</a></li><li><a class="tocitem" href="../../functions/bezier/">Bézier curves</a></li><li><a class="tocitem" href="../../functions/costs/">Cost functions</a></li><li><a class="tocitem" href="../../functions/differentials/">Differentials</a></li><li><a class="tocitem" href="../../functions/adjointdifferentials/">Adjoint Differentials</a></li><li><a class="tocitem" href="../../functions/gradients/">Gradients</a></li><li><a class="tocitem" href="../../functions/Jacobi_fields/">Jacobi Fields</a></li><li><a class="tocitem" href="../../functions/proximal_maps/">Proximal Maps</a></li><li><a class="tocitem" href="../../functions/manifold/">Specific Manifold Functions</a></li></ul></li><li><span class="tocitem">Helpers</span><ul><li><a class="tocitem" href="../../helpers/checks/">Checks</a></li><li><a class="tocitem" href="../../helpers/data/">Data</a></li><li><a class="tocitem" href="../../helpers/errorMeasures/">Error Measures</a></li><li><a class="tocitem" href="../../helpers/exports/">Exports</a></li></ul></li><li><a class="tocitem" href="../../contributing/">Contributing to Manopt.jl</a></li><li><a class="tocitem" href="../../notation/">Notation</a></li><li><a class="tocitem" href="../../list/">Function Index</a></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><nav class="breadcrumb"><ul class="is-hidden-mobile"><li><a class="is-disabled">How to...</a></li><li class="is-active"><a href>AD in Manopt</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>AD in Manopt</a></li></ul></nav><div class="docs-right"><a class="docs-edit-link" href="https://github.com/JuliaManifolds/Manopt.jl/blob/master/pluto/AutomaticDifferentiation.jl" title="Edit on GitHub"><span class="docs-icon fab"></span><span class="docs-label is-hidden-touch">Edit on GitHub</span></a><a class="docs-settings-button fas fa-cog" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-sidebar-button fa fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a></div></header><article class="content" id="documenter-page"><style>
     table {
         display: table !important;
         margin: 2rem auto !important;
@@ -17,7 +17,7 @@
 <!--
     # This information is used for caching.
     [PlutoStaticHTML.State]
-    input_sha = "50d9aa495adccd507712f3488c67d96ff28ffc417b871e8615d080ef50a1b655"
+    input_sha = "46497a4fc030e329eda83578f05831c370eecea58d98131adec81316014300c7"
     julia_version = "1.7.2"
 -->
 
@@ -91,20 +91,20 @@ end</code></pre>
 
 
 <pre class='language-julia'><code class='language-julia'>f1(p) = p' * A'p</code></pre>
-<pre id='var-f1' class='pre-class'><code class='code-output'>f1 (generic function with 1 method)</code></pre>
+<pre id='var-f1' class='documenter-example-output'><code class='code-output'>f1 (generic function with 1 method)</code></pre>
 
 <pre class='language-julia'><code class='language-julia'>gradf1(p) = 2 * (A * p - p * p' * A * p)</code></pre>
-<pre id='var-gradf1' class='pre-class'><code class='code-output'>gradf1 (generic function with 1 method)</code></pre>
+<pre id='var-gradf1' class='documenter-example-output'><code class='code-output'>gradf1 (generic function with 1 method)</code></pre>
 
 
 <div class="markdown"><p>Manifolds provides a finite difference scheme in Tangent spaces, that you can introduce to use an existing framework &#40;if the wrapper is implemented&#41; form Euclidean space. Here we use <code>FiniteDiff.jl</code>.</p>
 </div>
 
 <pre class='language-julia'><code class='language-julia'>r_backend = Manifolds.TangentDiffBackend(Manifolds.FiniteDiffBackend())</code></pre>
-<pre id='var-r_backend' class='pre-class'><code class='code-output'>TangentDiffBackend{Manifolds.FiniteDiffBackend{Val{:central}}, ExponentialRetraction, LogarithmicInverseRetraction, DefaultOrthonormalBasis{ℝ, ManifoldsBase.TangentSpaceType}}(Manifolds.FiniteDiffBackend{Val{:central}}(Val{:central}()), ExponentialRetraction(), LogarithmicInverseRetraction(), DefaultOrthonormalBasis(ℝ))</code></pre>
+<pre id='var-r_backend' class='documenter-example-output'><code class='code-output'>TangentDiffBackend{Manifolds.FiniteDiffBackend{Val{:central}}, ExponentialRetraction, LogarithmicInverseRetraction, DefaultOrthonormalBasis{ℝ, ManifoldsBase.TangentSpaceType}}(Manifolds.FiniteDiffBackend{Val{:central}}(Val{:central}()), ExponentialRetraction(), LogarithmicInverseRetraction(), DefaultOrthonormalBasis(ℝ))</code></pre>
 
 <pre class='language-julia'><code class='language-julia'>gradf1_FD(p) = Manifolds.gradient(M, f1, p, r_backend)</code></pre>
-<pre id='var-gradf1_FD' class='pre-class'><code class='code-output'>gradf1_FD (generic function with 1 method)</code></pre>
+<pre id='var-gradf1_FD' class='documenter-example-output'><code class='code-output'>gradf1_FD (generic function with 1 method)</code></pre>
 
 <pre class='language-julia'><code class='language-julia'>begin
     p = zeros(n + 1)
@@ -113,7 +113,7 @@ end</code></pre>
     X2 = gradf1_FD(p)
     norm(M, p, X1 - X2)
 end</code></pre>
-<pre id='var-p' class='pre-class'><code class='code-output'>7.076144686543836e-10</code></pre>
+<pre id='var-p' class='documenter-example-output'><code class='code-output'>7.076144686543836e-10</code></pre>
 
 
 <div class="markdown"><p>We obtain quite a good approximation of the gradient.</p>
@@ -155,10 +155,10 @@ end</code></pre>
         M, F, p, RiemannianProjectionBackend(Manifolds.ReverseDiffBackend())
     )
 end</code></pre>
-<pre id='var-grad_f2_AD' class='pre-class'><code class='code-output'>grad_f2_AD (generic function with 1 method)</code></pre>
+<pre id='var-grad_f2_AD' class='documenter-example-output'><code class='code-output'>grad_f2_AD (generic function with 1 method)</code></pre>
 
 <pre class='language-julia'><code class='language-julia'>X3 = grad_f2_AD(M, p)</code></pre>
-<pre id='var-X3' class='pre-class'><code class='code-output'>201-element Vector{Float64}:
+<pre id='var-X3' class='documenter-example-output'><code class='code-output'>201-element Vector{Float64}:
   0.0
   0.14038510230586784
   1.2081562751116874
@@ -175,7 +175,7 @@ end</code></pre>
   2.085914708574009</code></pre>
 
 <pre class='language-julia'><code class='language-julia'>norm(M, p, X1 - X3)</code></pre>
-<pre id='var-hash230331' class='pre-class'><code class='code-output'>0.0</code></pre>
+<pre id='var-hash230331' class='documenter-example-output'><code class='code-output'>0.0</code></pre>
 
 
 <div class="markdown"><h3>An Example for a nonisometrically embedded Manifold</h3>
@@ -189,7 +189,7 @@ end</code></pre>
 </div>
 
 <pre class='language-julia'><code class='language-julia'>G(q) = sum(log.(eigvals(Symmetric(q))) .^ 2) / 2</code></pre>
-<pre id='var-G' class='pre-class'><code class='code-output'>G (generic function with 1 method)</code></pre>
+<pre id='var-G' class='documenter-example-output'><code class='code-output'>G (generic function with 1 method)</code></pre>
 
 
 <div class="markdown"><p>We can also interpret this as a function on the space of matrices and apply the Euclidean finite differences machinery; in this way we can easily derive the Euclidean gradient. But when computing the Riemannian gradient, we have to change the representer &#40;see again <a href="https://juliamanifolds.github.io/Manifolds.jl/latest/manifolds/metric.html#Manifolds.change_representer-Tuple&#123;AbstractManifold,&#37;20AbstractMetric,&#37;20Any,&#37;20Any&#125;"><code>change_representer</code></a>&#41; after projecting onto the tangent space <span class="tex">$T_p\mathcal P&#40;n&#41;$</span> at <span class="tex">$p$</span>.</p>
@@ -197,26 +197,26 @@ end</code></pre>
 </div>
 
 <pre class='language-julia'><code class='language-julia'>rotM(α) = [1.0 0.0 0.0; 0.0 cos(α) sin(α); 0.0 -sin(α) cos(α)]</code></pre>
-<pre id='var-rotM' class='pre-class'><code class='code-output'>rotM (generic function with 1 method)</code></pre>
+<pre id='var-rotM' class='documenter-example-output'><code class='code-output'>rotM (generic function with 1 method)</code></pre>
 
 <pre class='language-julia'><code class='language-julia'>q = rotM(π / 6) * [1.0 0.0 0.0; 0.0 2.0 0.0; 0.0 0.0 3.0] * transpose(rotM(π / 6))</code></pre>
-<pre id='var-q' class='pre-class'><code class='code-output'>3×3 Matrix{Float64}:
+<pre id='var-q' class='documenter-example-output'><code class='code-output'>3×3 Matrix{Float64}:
  1.0  0.0       0.0
  0.0  2.25      0.433013
  0.0  0.433013  2.75</code></pre>
 
 <pre class='language-julia'><code class='language-julia'>N = SymmetricPositiveDefinite(3)</code></pre>
-<pre id='var-N' class='pre-class'><code class='code-output'>SymmetricPositiveDefinite(3)</code></pre>
+<pre id='var-N' class='documenter-example-output'><code class='code-output'>SymmetricPositiveDefinite(3)</code></pre>
 
 <pre class='language-julia'><code class='language-julia'>is_point(N, q)</code></pre>
-<pre id='var-hash141872' class='pre-class'><code class='code-output'>true</code></pre>
+<pre id='var-hash141872' class='documenter-example-output'><code class='code-output'>true</code></pre>
 
 
 <div class="markdown"><p>We could first just compute the gradient using <code>FiniteDiff.jl</code>, but this yields the Euclidean gradient:</p>
 </div>
 
 <pre class='language-julia'><code class='language-julia'>FiniteDiff.finite_difference_gradient(G, q)</code></pre>
-<pre id='var-hash744676' class='pre-class'><code class='code-output'>3×3 Matrix{Float64}:
+<pre id='var-hash744676' class='documenter-example-output'><code class='code-output'>3×3 Matrix{Float64}:
  -1.83343e-11  0.0       0.0
   0.0          0.351481  0.0170005
   0.0          0.0       0.361296</code></pre>
@@ -231,10 +231,10 @@ end</code></pre>
         N, G, q, RiemannianProjectionBackend(Manifolds.FiniteDiffBackend())
     )
 end</code></pre>
-<pre id='var-grad_G_FD' class='pre-class'><code class='code-output'>grad_G_FD (generic function with 1 method)</code></pre>
+<pre id='var-grad_G_FD' class='documenter-example-output'><code class='code-output'>grad_G_FD (generic function with 1 method)</code></pre>
 
 <pre class='language-julia'><code class='language-julia'>G1 = grad_G_FD(N, q)</code></pre>
-<pre id='var-G1' class='pre-class'><code class='code-output'>3×3 Matrix{Float64}:
+<pre id='var-G1' class='documenter-example-output'><code class='code-output'>3×3 Matrix{Float64}:
  -1.83343e-11  0.0       0.0
   0.0          1.86368   0.826856
   0.0          0.826856  2.81845</code></pre>
@@ -244,7 +244,7 @@ end</code></pre>
 </div>
 
 <pre class='language-julia'><code class='language-julia'>G2 = -log(N, q, Matrix{Float64}(I, 3, 3))</code></pre>
-<pre id='var-G2' class='pre-class'><code class='code-output'>3×3 Matrix{Float64}:
+<pre id='var-G2' class='documenter-example-output'><code class='code-output'>3×3 Matrix{Float64}:
  -0.0  -0.0       -0.0
  -0.0   1.86368    0.826856
  -0.0   0.826856   2.81845</code></pre>
@@ -254,10 +254,10 @@ end</code></pre>
 </div>
 
 <pre class='language-julia'><code class='language-julia'>norm(G1 - G2)</code></pre>
-<pre id='var-hash135981' class='pre-class'><code class='code-output'>1.1994981317829302e-10</code></pre>
+<pre id='var-hash135981' class='documenter-example-output'><code class='code-output'>1.1994981317829302e-10</code></pre>
 
 <pre class='language-julia'><code class='language-julia'>isapprox(M, q, G1, G2; atol=2 * 1e-10)</code></pre>
-<pre id='var-hash184357' class='pre-class'><code class='code-output'>true</code></pre>
+<pre id='var-hash184357' class='documenter-example-output'><code class='code-output'>true</code></pre>
 
 
 <div class="markdown"><p>In this case we can not use <code>ReverseDiff.jl</code>, since it can not handle the <code>eigvals&#33;</code> function that is called internally.</p>
@@ -268,4 +268,4 @@ end</code></pre>
 <p>This tutorial illustrates how to use tools from Euclidean spaces, finite differences or automatic differentiation, to compute gradients on Riemannian manifolds. The scheme allows to use <em>any</em> differentiation framework within the embedding to derive a Riemannian gradient.</p>
 </div>
 
-<!-- PlutoStaticHTML.End --></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../Bezier/">« Use Bezier Curves</a><a class="docs-footer-nextpage" href="../../plans/">Plans »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.12 on <span class="colophon-date" title="Saturday 12 February 2022 12:03">Saturday 12 February 2022</span>. Using Julia version 1.7.2.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+<!-- PlutoStaticHTML.End --></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../Bezier/">« Use Bezier Curves</a><a class="docs-footer-nextpage" href="../../tutorials/StochasticGradientDescent/">do stochastic gradient descent »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.15 on <span class="colophon-date" title="Sunday 17 April 2022 09:02">Sunday 17 April 2022</span>. Using Julia version 1.7.2.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
