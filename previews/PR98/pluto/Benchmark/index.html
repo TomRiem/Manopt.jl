@@ -63,14 +63,14 @@ end;</code></pre>
     m1 = gradient_descent(M, F, gradF, x0; stopping_criterion=sc)
     @benchmark gradient_descent($M, $F, $gradF, $x0; stopping_criterion=$sc)
 end</code></pre>
-<pre id='var-x0' class='documenter-example-output'><code class='code-output'>BenchmarkTools.Trial: 231 samples with 1 evaluation.
- Range (min … max):  11.924 ms … 39.114 ms  ┊ GC (min … max):  0.00% … 32.27%
- Time  (median):     21.283 ms              ┊ GC (median):     0.00%
- Time  (mean ± σ):   21.672 ms ±  8.692 ms  ┊ GC (mean ± σ):  18.01% ± 18.56%
+<pre id='var-x0' class='documenter-example-output'><code class='code-output'>BenchmarkTools.Trial: 185 samples with 1 evaluation.
+ Range (min … max):  15.666 ms … 53.566 ms  ┊ GC (min … max):  0.00% … 32.08%
+ Time  (median):     26.511 ms              ┊ GC (median):     0.00%
+ Time  (mean ± σ):   27.028 ms ±  9.319 ms  ┊ GC (mean ± σ):  17.06% ± 18.42%
 
-  █                             ▂▃                             
-  █▆▆▄▄▇▆▆▆▆▆▇▆▇▆▆▄▆▇▇▆▄▆▇▄▇▇▄▄████▄▆▇▇▇▆▆▆▆▆▇▆▇▁█▄▆▇▄▄▇▆▇▄▇▆ ▆
-  11.9 ms      Histogram: log(frequency) by time      38.6 ms <
+  █▅                        ▂                                  
+  ███▅▃▄▃▅▃▃▄▃▄▃▅▅▁▄▄▃▃▅▃▃▄▃█▅▃▃▃▄▄▃▅▁▅▃▄▃▃▅▃▄▃▄▃▃▃▃▅▁▅▃▃▃▃▁▃ ▃
+  15.7 ms         Histogram: frequency by time        45.7 ms <
 
  Memory estimate: 25.81 MiB, allocs estimate: 88276.</code></pre>
 
@@ -111,14 +111,14 @@ end</code></pre>
         $M, $F, $gradF2!, m2; evaluation=$(MutatingEvaluation()), stopping_criterion=$sc
     ) setup = (m2 = deepcopy($x0))
 end</code></pre>
-<pre id='var-m2' class='documenter-example-output'><code class='code-output'>BenchmarkTools.Trial: 833 samples with 1 evaluation.
- Range (min … max):  5.880 ms …  13.151 ms  ┊ GC (min … max): 0.00% … 53.09%
- Time  (median):     5.935 ms               ┊ GC (median):    0.00%
- Time  (mean ± σ):   6.000 ms ± 499.565 μs  ┊ GC (mean ± σ):  0.56% ±  3.68%
+<pre id='var-m2' class='documenter-example-output'><code class='code-output'>BenchmarkTools.Trial: 486 samples with 1 evaluation.
+ Range (min … max):   9.557 ms …  18.474 ms  ┊ GC (min … max): 0.00% … 45.80%
+ Time  (median):     10.010 ms               ┊ GC (median):    0.00%
+ Time  (mean ± σ):   10.281 ms ± 941.943 μs  ┊ GC (mean ± σ):  0.34% ±  2.92%
 
-     ▃▆█▂                                                      
-  ▂▃▅█████▆▆▄▄▄▃▃▃▄▃▃▂▂▃▃▂▃▃▂▂▁▂▁▁▁▁▁▁▁▂▂▂▂▂▂▂▂▂▁▁▁▁▁▁▂▁▁▁▁▂▃ ▃
-  5.88 ms         Histogram: frequency by time        6.41 ms <
+    ▆█▄▃▁                                                       
+  ▃▇█████▆▇▆▅▆▄▃▃▃▅▃▃▂▂▁▂▂▃▃▁▁▂▃▃▁▂▁▁▁▁▂▂▂▁▁▁▁▁▁▁▁▂▁▂▁▁▁▁▁▁▁▂▂ ▃
+  9.56 ms         Histogram: frequency by time         14.5 ms <
 
  Memory estimate: 421.50 KiB, allocs estimate: 1512.</code></pre>
 
@@ -127,6 +127,6 @@ end</code></pre>
 </div>
 
 <pre class='language-julia'><code class='language-julia'>distance(M, m1, m2)</code></pre>
-<pre id='var-hash146788' class='documenter-example-output'><code class='code-output'>0.0</code></pre>
+<pre id='var-hash146788' class='documenter-example-output'><code class='code-output'>3.6500241499888574e-8</code></pre>
 
-<!-- PlutoStaticHTML.End --></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../SecondOrderDifference/">« Compute a second order difference</a><a class="docs-footer-nextpage" href="../Bezier/">Use Bezier Curves »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.15 on <span class="colophon-date" title="Sunday 17 April 2022 09:02">Sunday 17 April 2022</span>. Using Julia version 1.7.2.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+<!-- PlutoStaticHTML.End --></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../SecondOrderDifference/">« Compute a second order difference</a><a class="docs-footer-nextpage" href="../Bezier/">Use Bezier Curves »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.15 on <span class="colophon-date" title="Sunday 17 April 2022 11:20">Sunday 17 April 2022</span>. Using Julia version 1.7.2.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
