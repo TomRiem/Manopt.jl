@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Do Geodesic regression · Manopt.jl</title><script data-outdated-warner src="../../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.044/juliamono.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.11/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../../assets/documenter.js"></script><script src="../../siteinfo.js"></script><script src="../../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../../assets/themeswap.js"></script></head><body><div id="documenter"><nav class="docs-sidebar"><a class="docs-logo" href="../../"><img src="../../assets/logo.png" alt="Manopt.jl logo"/></a><div class="docs-package-name"><span class="docs-autofit"><a href="../../">Manopt.jl</a></span></div><form class="docs-search" action="../../search/"><input class="docs-search-query" id="documenter-search-query" name="q" type="text" placeholder="Search docs"/></form><ul class="docs-menu"><li><a class="tocitem" href="../../">Home</a></li><li><a class="tocitem" href="../../about/">About</a></li><li><span class="tocitem">How to...</span><ul><li><a class="tocitem" href="../Optimize!/">Get started: Optimize!</a></li><li><a class="tocitem" href="../AutomaticDifferentiation/">Use AD in Manopt</a></li><li><a class="tocitem" href="../HowToRecord/">How to record values</a></li><li class="is-active"><a class="tocitem" href>Do Geodesic regression</a></li><li><a class="tocitem" href="../Bezier/">Use Bezier Curves</a></li><li><a class="tocitem" href="../SecondOrderDifference/">Compute a second order difference</a></li><li><a class="tocitem" href="../StochasticGradientDescent/">Do stochastic gradient descent</a></li><li><a class="tocitem" href="../Benchmark/">speed up! using <code>gradF!</code></a></li><li><a class="tocitem" href="../JacobiFields/">Illustrate Jacobi Fields</a></li></ul></li><li><span class="tocitem">Plans</span><ul><li><a class="tocitem" href="../../plans/">Specify a Solver</a></li><li><a class="tocitem" href="../../plans/problem/">Problem</a></li><li><a class="tocitem" href="../../plans/options/">Options</a></li><li><a class="tocitem" href="../../plans/stepsize/">Stepsize</a></li></ul></li><li><span class="tocitem">Solvers</span><ul><li><a class="tocitem" href="../../solvers/">Introduction</a></li><li><a class="tocitem" href="../../solvers/alternating_gradient_descent/">Alternating Gradient Descent</a></li><li><a class="tocitem" href="../../solvers/ChambollePock/">Chambolle-Pock</a></li><li><a class="tocitem" href="../../solvers/conjugate_gradient_descent/">Conjugate gradient descent</a></li><li><a class="tocitem" href="../../solvers/cyclic_proximal_point/">Cyclic Proximal Point</a></li><li><a class="tocitem" href="../../solvers/DouglasRachford/">Douglas–Rachford</a></li><li><a class="tocitem" href="../../solvers/gradient_descent/">Gradient Descent</a></li><li><a class="tocitem" href="../../solvers/NelderMead/">Nelder–Mead</a></li><li><a class="tocitem" href="../../solvers/particle_swarm/">Particle Swarm Optimization</a></li><li><a class="tocitem" href="../../solvers/quasi_Newton/">Quasi-Newton</a></li><li><a class="tocitem" href="../../solvers/stochastic_gradient_descent/">Stochastic Gradient Descent</a></li><li><a class="tocitem" href="../../solvers/subgradient/">Subgradient method</a></li><li><a class="tocitem" href="../../solvers/truncated_conjugate_gradient_descent/">Steihaug-Toint TCG Method</a></li><li><a class="tocitem" href="../../solvers/trust_regions/">Trust-Regions Solver</a></li></ul></li><li><span class="tocitem">Functions</span><ul><li><a class="tocitem" href="../../functions/">Introduction</a></li><li><a class="tocitem" href="../../functions/bezier/">Bézier curves</a></li><li><a class="tocitem" href="../../functions/costs/">Cost functions</a></li><li><a class="tocitem" href="../../functions/differentials/">Differentials</a></li><li><a class="tocitem" href="../../functions/adjointdifferentials/">Adjoint Differentials</a></li><li><a class="tocitem" href="../../functions/gradients/">Gradients</a></li><li><a class="tocitem" href="../../functions/Jacobi_fields/">Jacobi Fields</a></li><li><a class="tocitem" href="../../functions/proximal_maps/">Proximal Maps</a></li><li><a class="tocitem" href="../../functions/manifold/">Specific Manifold Functions</a></li></ul></li><li><span class="tocitem">Helpers</span><ul><li><a class="tocitem" href="../../helpers/checks/">Checks</a></li><li><a class="tocitem" href="../../helpers/data/">Data</a></li><li><a class="tocitem" href="../../helpers/errorMeasures/">Error Measures</a></li><li><a class="tocitem" href="../../helpers/exports/">Exports</a></li></ul></li><li><a class="tocitem" href="../../contributing/">Contributing to Manopt.jl</a></li><li><a class="tocitem" href="../../notation/">Notation</a></li><li><a class="tocitem" href="../../list/">Function Index</a></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><nav class="breadcrumb"><ul class="is-hidden-mobile"><li><a class="is-disabled">How to...</a></li><li class="is-active"><a href>Do Geodesic regression</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Do Geodesic regression</a></li></ul></nav><div class="docs-right"><a class="docs-edit-link" href="https://github.com/JuliaManifolds/Manopt.jl/blob/master/pluto/GeodesicRegression.jl" title="Edit on GitHub"><span class="docs-icon fab"></span><span class="docs-label is-hidden-touch">Edit on GitHub</span></a><a class="docs-settings-button fas fa-cog" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-sidebar-button fa fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a></div></header><article class="content" id="documenter-page"><style>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Do Geodesic regression · Manopt.jl</title><script data-outdated-warner src="../../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.044/juliamono.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.11/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../../assets/documenter.js"></script><script src="../../siteinfo.js"></script><script src="../../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../../assets/themeswap.js"></script></head><body><div id="documenter"><nav class="docs-sidebar"><a class="docs-logo" href="../../"><img src="../../assets/logo.png" alt="Manopt.jl logo"/></a><div class="docs-package-name"><span class="docs-autofit"><a href="../../">Manopt.jl</a></span></div><form class="docs-search" action="../../search/"><input class="docs-search-query" id="documenter-search-query" name="q" type="text" placeholder="Search docs"/></form><ul class="docs-menu"><li><a class="tocitem" href="../../">Home</a></li><li><a class="tocitem" href="../../about/">About</a></li><li><span class="tocitem">How to...</span><ul><li><a class="tocitem" href="../Optimize!/">Get started: Optimize!</a></li><li><a class="tocitem" href="../AutomaticDifferentiation/">Use AD in Manopt</a></li><li><a class="tocitem" href="../HowToRecord/">How to record values</a></li><li class="is-active"><a class="tocitem" href>Do Geodesic regression</a></li><li><a class="tocitem" href="../Bezier/">Use Bezier Curves</a></li><li><a class="tocitem" href="../SecondOrderDifference/">Compute a second order difference</a></li><li><a class="tocitem" href="../StochasticGradientDescent/">Do stochastic gradient descent</a></li><li><a class="tocitem" href="../Benchmark/">speed up! using <code>gradF!</code></a></li><li><a class="tocitem" href="../JacobiFields/">Illustrate Jacobi Fields</a></li></ul></li><li><span class="tocitem">Plans</span><ul><li><a class="tocitem" href="../../plans/">Specify a Solver</a></li><li><a class="tocitem" href="../../plans/problem/">Problem</a></li><li><a class="tocitem" href="../../plans/options/">Options</a></li><li><a class="tocitem" href="../../plans/stepsize/">Stepsize</a></li><li><a class="tocitem" href="../../plans/stopping_criteria/">Stopping Criteria</a></li></ul></li><li><span class="tocitem">Solvers</span><ul><li><a class="tocitem" href="../../solvers/">Introduction</a></li><li><a class="tocitem" href="../../solvers/alternating_gradient_descent/">Alternating Gradient Descent</a></li><li><a class="tocitem" href="../../solvers/ChambollePock/">Chambolle-Pock</a></li><li><a class="tocitem" href="../../solvers/conjugate_gradient_descent/">Conjugate gradient descent</a></li><li><a class="tocitem" href="../../solvers/cyclic_proximal_point/">Cyclic Proximal Point</a></li><li><a class="tocitem" href="../../solvers/DouglasRachford/">Douglas–Rachford</a></li><li><a class="tocitem" href="../../solvers/gradient_descent/">Gradient Descent</a></li><li><a class="tocitem" href="../../solvers/NelderMead/">Nelder–Mead</a></li><li><a class="tocitem" href="../../solvers/particle_swarm/">Particle Swarm Optimization</a></li><li><a class="tocitem" href="../../solvers/quasi_Newton/">Quasi-Newton</a></li><li><a class="tocitem" href="../../solvers/stochastic_gradient_descent/">Stochastic Gradient Descent</a></li><li><a class="tocitem" href="../../solvers/subgradient/">Subgradient method</a></li><li><a class="tocitem" href="../../solvers/truncated_conjugate_gradient_descent/">Steihaug-Toint TCG Method</a></li><li><a class="tocitem" href="../../solvers/trust_regions/">Trust-Regions Solver</a></li></ul></li><li><span class="tocitem">Functions</span><ul><li><a class="tocitem" href="../../functions/">Introduction</a></li><li><a class="tocitem" href="../../functions/bezier/">Bézier curves</a></li><li><a class="tocitem" href="../../functions/costs/">Cost functions</a></li><li><a class="tocitem" href="../../functions/differentials/">Differentials</a></li><li><a class="tocitem" href="../../functions/adjointdifferentials/">Adjoint Differentials</a></li><li><a class="tocitem" href="../../functions/gradients/">Gradients</a></li><li><a class="tocitem" href="../../functions/Jacobi_fields/">Jacobi Fields</a></li><li><a class="tocitem" href="../../functions/proximal_maps/">Proximal Maps</a></li><li><a class="tocitem" href="../../functions/manifold/">Specific Manifold Functions</a></li></ul></li><li><span class="tocitem">Helpers</span><ul><li><a class="tocitem" href="../../helpers/checks/">Checks</a></li><li><a class="tocitem" href="../../helpers/data/">Data</a></li><li><a class="tocitem" href="../../helpers/errorMeasures/">Error Measures</a></li><li><a class="tocitem" href="../../helpers/exports/">Exports</a></li></ul></li><li><a class="tocitem" href="../../contributing/">Contributing to Manopt.jl</a></li><li><a class="tocitem" href="../../notation/">Notation</a></li><li><a class="tocitem" href="../../list/">Function Index</a></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><nav class="breadcrumb"><ul class="is-hidden-mobile"><li><a class="is-disabled">How to...</a></li><li class="is-active"><a href>Do Geodesic regression</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Do Geodesic regression</a></li></ul></nav><div class="docs-right"><a class="docs-edit-link" href="https://github.com/JuliaManifolds/Manopt.jl/blob/master/nothing" title="Edit on GitHub"><span class="docs-icon fab"></span><span class="docs-label is-hidden-touch">Edit on GitHub</span></a><a class="docs-settings-button fas fa-cog" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-sidebar-button fa fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a></div></header><article class="content" id="documenter-page"><style>
     table {
         display: table !important;
         margin: 2rem auto !important;
@@ -11,13 +11,21 @@
         margin-top: 1.4rem !important;
         margin-bottom: 1.4rem !important;
     }
+
+    .code-output {
+        padding: 0.7rem 0.5rem !important;
+    }
+
+    .admonition-body {
+        padding: 0em 1.25em !important;
+    }
 </style>
 
 <!-- PlutoStaticHTML.Begin -->
 <!--
     # This information is used for caching.
     [PlutoStaticHTML.State]
-    input_sha = "a2ece46aaa1ca4868e9d60b288ceecdd1d053160ee3ba6415c352aa038002c11"
+    input_sha = "2cde6733cf82a5e31c5b1ce77e244f99511b591f0bd7b3b30ded0e0c6fc124a6"
     julia_version = "1.7.2"
 -->
 
@@ -114,7 +122,7 @@ p^* &#61; d^* - t^*X^*$$</p>
 </div>
 
 <pre class='language-julia'><code class='language-julia'>M = TangentBundle(S)</code></pre>
-<pre id='var-M' class='documenter-example-output'><code class='code-output'>TangentBundle(Sphere(2, ℝ))</code></pre>
+<pre id='var-M' class='code-output documenter-example-output'>TangentBundle(Sphere(2, ℝ))</pre>
 
 <pre class='language-julia'><code class='language-julia'>begin
     struct RegressionCost{T,S}
@@ -177,31 +185,31 @@ end;</code></pre>
     pca1 = get_vector(S, m, svd(A).U[:, 1], DefaultOrthonormalBasis())
     x0 = ProductRepr(m, pca1)
 end</code></pre>
-<pre id='var-m' class='documenter-example-output'><code class='code-output'>ProductRepr with 2 submanifold components:
+<pre id='var-m' class='code-output documenter-example-output'>ProductRepr with 2 submanifold components:
  Component 1 =
   3-element Vector{Float64}:
-    0.48985457460172543
-   -0.10056776462912519
-    0.8659841918067922
+   0.6393036421980713
+   0.04032483868378185
+   0.7678963214245836
  Component 2 =
   3-element Vector{Float64}:
-   -0.15789513288601748
-   -0.9871311737968067
-   -0.025321388774032713</code></pre>
+    0.47873943719540973
+   -0.8023480991971249
+   -0.35643523814093203</pre>
 
 
 <div class="markdown"><p>The optimal “time labels” are then just the projections <span class="tex">$t_i &#61; ⟨d_i,X^*⟩$</span>, <span class="tex">$i&#61;1,\ldots,n$</span>.</p>
 </div>
 
 <pre class='language-julia'><code class='language-julia'>t = map(d -&gt; inner(S, m, pca1, log(S, m, d)), data)</code></pre>
-<pre id='var-t' class='documenter-example-output'><code class='code-output'>7-element Vector{Float64}:
- -0.03464158436741809
-  0.7784609828306844
- -0.3052494408960866
-  0.08046014209018104
- -0.4428545927215576
- -0.17003106578245183
-  0.09096276191372668</code></pre>
+<pre id='var-t' class='code-output documenter-example-output'>7-element Vector{Float64}:
+  0.6859849720951859
+  0.5420322356217612
+ -0.024805200905536534
+  0.25138883521609395
+ -0.9951453376299806
+ -0.5326743152329716
+  0.032299662185943843</pre>
 
 
 <div class="markdown"><p>And we can call the gradient descent. Note that since <code>gradF&#33;</code> works in place of <code>Y</code>, we have to set the <code>evalutation</code> type accordingly.</p>
@@ -220,9 +228,9 @@ end</code></pre>
     )
 end</code></pre>
 <pre id="plutouiterminal">
-Initial  | F(x): 0.170940
-# 50     | F(x): 0.170839
-# 100    | F(x): 0.170839
+Initial  | F(x): 0.167691
+# 50     | F(x): 0.166589
+# 100    | F(x): 0.166589
 The algorithm reached its maximal number of iterations (100).
 </pre>
 
@@ -240,21 +248,21 @@ The algorithm reached its maximal number of iterations (100).
         S, data[highlighted], geo_pts[highlighted], 0.5 .+ dense_t
     )
 end</code></pre>
-<pre id='var-geo_pts' class='documenter-example-output'><code class='code-output'>100-element Vector{Vector{Float64}}:
- [0.6395758740073583, -0.2021804838901923, 0.7416641782651034]
- [0.6379949801395407, -0.20197746749039602, 0.7430797453456208]
- [0.6364111870494841, -0.20177353325020322, 0.744491935670223]
- [0.6348245019343738, -0.2015686820963464, 0.7459007428215337]
- [0.6332349320045374, -0.2013629149597248, 0.7473061603975516]
- [0.6316424844834116, -0.2011562327754001, 0.7487081820116779]
- [0.6300471666075101, -0.20094863648259212, 0.7501068012927459]
+<pre id='var-geo_pts' class='code-output documenter-example-output'>100-element Vector{Vector{Float64}}:
+ [0.902844145161821, 0.045170915381000196, 0.42758863169015987]
+ [0.901703864244314, 0.04307984996067457, 0.43020258917658477]
+ [0.9005523070070021, 0.0409882458023169, 0.4328111667348882]
+ [0.8993894878507633, 0.038896129062627106, 0.4354143317433237]
+ [0.8982154213173129, 0.03680352590471522, 0.4380120516478319]
+ [0.8970301220890208, 0.034710462497774236, 0.4406042939624475]
+ [0.8958336049887283, 0.03261696501675281, 0.44319102626970575]
  ⋮
- [0.4793023210412748, -0.17922174383963085, 0.8591558948057845]
- [0.4774820177413256, -0.17893704579018133, 0.860228142051604]
- [0.47565954463357585, -0.17865153460226096, 0.8612964801874184]
- [0.4738349099998379, -0.17836521157331006, 0.8623609043584093]
- [0.47200812213174603, -0.1780780780044581, 0.8634214097275447]
- [0.47017918933072017, -0.17779013520051792, 0.8644779914756003]</code></pre>
+ [0.7487173897253363, -0.15023634120801826, 0.6456402342661948]
+ [0.7465983102807675, -0.15226385641924073, 0.6476161526044912]
+ [0.7444698941995861, -0.1542894674843152, 0.6495839721343681]
+ [0.742332168098846, -0.15631314907182298, 0.6515436682471227]
+ [0.7401851587120282, -0.15833487587447442, 0.6534952164356403]
+ [0.7380288928887067, -0.16035462260942582, 0.6554385922947006]</pre>
 
 <pre class='language-julia'><code class='language-julia'>render_asy && asymptote_export_S2_signals(
     image_prefix * "/regression_result1.asy";
@@ -288,7 +296,7 @@ end</code></pre>
     log(S, geo_pts[highlighted], geo_pts[highlighted + 1]),
     log(S, geo_pts[highlighted], data[highlighted]),
 )</code></pre>
-<pre id='var-hash123107' class='documenter-example-output'><code class='code-output'>-0.00011393283606515522</code></pre>
+<pre id='var-hash123107' class='code-output documenter-example-output'>-0.03332865156432007</pre>
 
 
 <div class="markdown"><p>But we also started with one of the best scenarios, i.e. equally spaced points on a geodesic obstructed by noise</p>
@@ -306,14 +314,14 @@ end</code></pre>
     x1 = ProductRepr(m, pca2)
     t2 = map(d -&gt; inner(S, m2, pca2, log(S, m2, d)), data2)
 end</code></pre>
-<pre id='var-anon1780688303734974595' class='documenter-example-output'><code class='code-output'>7-element Vector{Float64}:
-  0.5221797527548302
-  0.6256424524204185
-  1.0361556414781623
- -0.15840472737843753
- -0.48893508633931904
- -0.6277391602707106
- -0.9179047022251168</code></pre>
+<pre id='var-m2' class='code-output documenter-example-output'>7-element Vector{Float64}:
+  0.4875732935931075
+  0.5133659334530771
+  0.3266019049669752
+ -0.1575023965094
+ -0.2929083932254734
+ -0.34799673733738146
+ -0.5581278842567322</pre>
 
 <pre class='language-julia'><code class='language-julia'>with_terminal() do
     global y2 = gradient_descent(
@@ -328,11 +336,11 @@ end</code></pre>
     )
 end</code></pre>
 <pre id="plutouiterminal">
-Initial  | F(x): 0.098543
-# 50     | F(x): 0.080587
-# 100    | F(x): 0.080587
-# 150    | F(x): 0.080587
-# 200    | F(x): 0.080587
+Initial  | F(x): 0.340087
+# 50     | F(x): 0.192047
+# 100    | F(x): 0.192047
+# 150    | F(x): 0.192047
+# 200    | F(x): 0.192047
 The algorithm reached its maximal number of iterations (200).
 </pre>
 
@@ -345,21 +353,21 @@ The algorithm reached its maximal number of iterations (200).
         S, data2[highlighted], geo_pts2[highlighted], 0.5 .+ dense_t
     )
 end</code></pre>
-<pre id='var-geo2' class='documenter-example-output'><code class='code-output'>100-element Vector{Vector{Float64}}:
- [0.4467491787108321, 0.10917361341028921, 0.8879731378009909]
- [0.44660508537767696, 0.10894099283449833, 0.8880741848488962]
- [0.4464609540448035, 0.1087083629893839, 0.8881751563343641]
- [0.4463167847244753, 0.1084757238947394, 0.8882760522488032]
- [0.446172577428959, 0.10824307557035907, 0.8883768725836287]
- [0.4460283321705247, 0.10801041803603799, 0.8884776173302623]
- [0.4458840489614455, 0.107777751311572, 0.8885782864801322]
+<pre id='var-geo2' class='code-output documenter-example-output'>100-element Vector{Vector{Float64}}:
+ [0.5832181843356018, -0.1594311707261668, 0.7965163220306083]
+ [0.5844330722629238, -0.15651321824276232, 0.7962044941851392]
+ [0.5856420646421603, -0.15359368691098668, 0.7958846345185698]
+ [0.586845149277436, -0.15067260618200917, 0.795556746257528]
+ [0.5880423140324712, -0.14775000552262887, 0.7952208327096313]
+ [0.5892335468307037, -0.14482591441497733, 0.7948768972634533]
+ [0.5904188356554104, -0.1419003623562212, 0.7945249433884894]
  ⋮
- [0.4330399622757984, 0.08726941857730464, 0.897140144934644]
- [0.43289235100302376, 0.08703601330275157, 0.8972340524252509]
- [0.4327447028972888, 0.08680260062267606, 0.8973278835740464]
- [0.4325970179711562, 0.08656918055693819, 0.8974216383730466]
- [0.43244929623719197, 0.08633575312539865, 0.8975153168142744]
- [0.4323015377079651, 0.08610231834791882, 0.8976089188897592]</code></pre>
+ [0.6702013782101616, 0.11777850491454137, 0.7327744103237334]
+ [0.670817104158271, 0.12071495550908345, 0.7317324048346849]
+ [0.6714260631476269, 0.12365018837509756, 0.7306830178955043]
+ [0.6720282490352725, 0.12658417390302276, 0.7296262600920248]
+ [0.6726236557465758, 0.12951688249588125, 0.7285621420844345]
+ [0.6732122772752908, 0.1324482845695764, 0.7274906746071685]</pre>
 
 <pre class='language-julia'><code class='language-julia'>render_asy && asymptote_export_S2_signals(
     image_prefix * "/regression_result2.asy";
@@ -393,9 +401,9 @@ end</code></pre>
 </div>
 
 <pre class='language-julia'><code class='language-julia'>N = M × Euclidean(length(t2))</code></pre>
-<pre id='var-N' class='documenter-example-output'><code class='code-output'>ProductManifold with 2 submanifolds:
+<pre id='var-N' class='code-output documenter-example-output'>ProductManifold with 2 submanifolds:
  TangentBundle(Sphere(2, ℝ))
- Euclidean(7; field = ℝ)</code></pre>
+ Euclidean(7; field = ℝ)</pre>
 
 
 <div class="markdown"><p class="tex">$$  \operatorname*&#123;arg\,min&#125;_&#123;\bigl&#40;&#40;p,X&#41;,t\bigr&#41;\in\mathcal N&#125; F&#40;p, X, t&#41;.$$</p>
@@ -502,9 +510,9 @@ end;</code></pre>
     )
 end</code></pre>
 <pre id="plutouiterminal">
-Initial  | F(x): 0.098543
-# 50     | F(x): 0.072423
-# 100    | F(x): 0.072423
+Initial  | F(x): 0.340087
+# 50     | F(x): 0.189544
+# 100    | F(x): 0.189544
 The algorithm reached its maximal number of iterations (100).
 </pre>
 
@@ -558,4 +566,4 @@ end;</code></pre>
 </div>
 </div>
 
-<!-- PlutoStaticHTML.End --></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../HowToRecord/">« How to record values</a><a class="docs-footer-nextpage" href="../Bezier/">Use Bezier Curves »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.16 on <span class="colophon-date" title="Sunday 24 April 2022 19:36">Sunday 24 April 2022</span>. Using Julia version 1.7.2.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+<!-- PlutoStaticHTML.End --></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../HowToRecord/">« How to record values</a><a class="docs-footer-nextpage" href="../Bezier/">Use Bezier Curves »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.18 on <span class="colophon-date" title="Wednesday 25 May 2022 09:11">Wednesday 25 May 2022</span>. Using Julia version 1.7.2.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
