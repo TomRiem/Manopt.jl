@@ -63,16 +63,16 @@ end;</code></pre>
     m1 = gradient_descent(M, F, gradF, x0; stopping_criterion=sc)
     @benchmark gradient_descent($M, $F, $gradF, $x0; stopping_criterion=$sc)
 end</code></pre>
-<pre id='var-x0' class='documenter-example-output'><code class='code-output'>BenchmarkTools.Trial: 393 samples with 1 evaluation.
- Range (min … max):   6.542 ms … 37.636 ms  ┊ GC (min … max):  0.00% … 64.05%
- Time  (median):     12.218 ms              ┊ GC (median):     0.00%
- Time  (mean ± σ):   12.752 ms ±  7.275 ms  ┊ GC (mean ± σ):  16.67% ± 19.55%
+<pre id='var-x0' class='documenter-example-output'><code class='code-output'>BenchmarkTools.Trial: 428 samples with 1 evaluation.
+ Range (min … max):   7.091 ms … 36.828 ms  ┊ GC (min … max):  0.00% … 65.03%
+ Time  (median):     11.559 ms              ┊ GC (median):     0.00%
+ Time  (mean ± σ):   11.698 ms ±  7.268 ms  ┊ GC (mean ± σ):  17.00% ± 19.01%
 
-   ▁█▃       ▁▄▄                                               
-  ▄███▃▃▃▃▃▂▄████▅▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▂▂▃▂▂▂▃▂▃▂▃▃ ▃
-  6.54 ms         Histogram: frequency by time        35.8 ms <
+  █       ▂█                                                   
+  ██▇▅▇▆▇▆██▁▆▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▄▅▆█▅▆▆▆▆ ▆
+  7.09 ms      Histogram: log(frequency) by time      36.4 ms <
 
- Memory estimate: 9.80 MiB, allocs estimate: 35807.</code></pre>
+ Memory estimate: 8.81 MiB, allocs estimate: 32193.</code></pre>
 
 
 <div class="markdown"><h2>Inplace computation of the gradient</h2>
@@ -111,22 +111,22 @@ end</code></pre>
         $M, $F, $gradF2!, m2; evaluation=$(MutatingEvaluation()), stopping_criterion=$sc
     ) setup = (m2 = deepcopy($x0))
 end</code></pre>
-<pre id='var-m2' class='documenter-example-output'><code class='code-output'>BenchmarkTools.Trial: 2116 samples with 1 evaluation.
- Range (min … max):  1.856 ms …  16.712 ms  ┊ GC (min … max): 0.00% … 80.63%
- Time  (median):     2.362 ms               ┊ GC (median):    0.00%
- Time  (mean ± σ):   2.359 ms ± 577.012 μs  ┊ GC (mean ± σ):  0.80% ±  3.05%
+<pre id='var-m2' class='documenter-example-output'><code class='code-output'>BenchmarkTools.Trial: 2442 samples with 1 evaluation.
+ Range (min … max):  1.991 ms …  16.271 ms  ┊ GC (min … max): 0.00% … 82.28%
+ Time  (median):     2.021 ms               ┊ GC (median):    0.00%
+ Time  (mean ± σ):   2.043 ms ± 493.513 μs  ┊ GC (mean ± σ):  0.81% ±  2.92%
 
-  ▃▂           ▂  ▁ ▁▁▂▂▃▄▄▄▃▂▂▄▃▂▅▂▃▅▆▄█▃▄▃█▅▃▃▃▅▃▃ ▅▂▇▆▂     
-  ██▇▅▄▆▅▅▆▇█▇▆█▆██▆██████████████████████████████████████▆▄▂ ▆
-  1.86 ms         Histogram: frequency by time        2.74 ms <
+     ▁ ▁▄█▄ ▂▃▅▃ ▁▆█▃▁▇▂                                       
+  ▁▃▅███████████████████▇▅▇▆▄▃▄▄▃▄▂▅▅▄▃▄▃▃▃▂▃▄▃▃▃▂▂▂▂▁▁▂▁▂▁▁▁ ▄
+  1.99 ms         Histogram: frequency by time         2.1 ms <
 
- Memory estimate: 165.01 KiB, allocs estimate: 576.</code></pre>
+ Memory estimate: 149.94 KiB, allocs estimate: 521.</code></pre>
 
 
 <div class="markdown"><p>Mote that the results <code>m1</code>and <code>m2</code> are of course &#40;approximately&#41; the same.</p>
 </div>
 
 <pre class='language-julia'><code class='language-julia'>distance(M, m1, m2)</code></pre>
-<pre id='var-hash146788' class='documenter-example-output'><code class='code-output'>2.580956827951785e-8</code></pre>
+<pre id='var-hash146788' class='documenter-example-output'><code class='code-output'>2.1073424255447017e-8</code></pre>
 
-<!-- PlutoStaticHTML.End --></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../StochasticGradientDescent/">« Do stochastic gradient descent</a><a class="docs-footer-nextpage" href="../JacobiFields/">Illustrate Jacobi Fields »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.17 on <span class="colophon-date" title="Monday 23 May 2022 17:50">Monday 23 May 2022</span>. Using Julia version 1.7.2.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+<!-- PlutoStaticHTML.End --></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../StochasticGradientDescent/">« Do stochastic gradient descent</a><a class="docs-footer-nextpage" href="../JacobiFields/">Illustrate Jacobi Fields »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.18 on <span class="colophon-date" title="Wednesday 25 May 2022 09:05">Wednesday 25 May 2022</span>. Using Julia version 1.7.2.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
