@@ -109,7 +109,7 @@ end
 @doc raw"""
     DifferenceInner
 
-A functor `(M,p) → ℝ` to represent the inner problem of a [`DifferenceOfConvexProblem`](@ref),
+A functor `(M,q) → ℝ` to represent the inner problem of a [`DifferenceOfConvexProblem`](@ref),
 i.e. a cost function of the form
 
 ```math
@@ -144,7 +144,7 @@ its gradient is given by using ``F=F_1(F_2(q))``, where ``F_1(Y) = ⟨X,Y⟩`` a
 and the chain rule as well as the [`adjoint_differential_log_argument`](@ref) for ``D^*F_2(p)``
 
 ```math
-    \operatorname{grad} F (q) = \operatorname{grad} f(q) - DF_2^*(q)[X]
+    \operatorname{grad} F(q) = \operatorname{grad} f(q) - DF_2^*(q)[X]
 ```
 
 for a point `p` and a tangent vector `X` at `p` that are stored within this functor as well

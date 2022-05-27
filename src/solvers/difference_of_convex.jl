@@ -1,5 +1,7 @@
 @doc raw"""
-    difference_of_convex(M, cost, f, gradf, ∂g, p;
+    difference_of_convex(M, cost, ∂g, p;
+        f=nothing,
+        grad_f=nothing,
         initial_vector=zero_vector(M,p)
         evaluation::AbstractEvaluationType = MutatingEvaluation(),
         subtask = (
@@ -18,11 +20,11 @@ Compute the difference of convex algorithm to minimize
 This algorithm performs the following steps given a start point `p`= ``p^{(0)}``.
 Then repeat for ``k=0,1,\ldots``
 
-1. Take ``X^{(k)}  ∈ ∂g(p^{(k)}``
+1. Take ``X^{(k)}  ∈ ∂g(p^{(k)})``
 2. Set the next iterate to the solution of the subproblem
-  ```math
-    p^{(k+1)} \in \operatorname*{argmin}_{q\in \mathcal M} f(p) - f(q) - ⟨X^{(k)}, \log_{p^{(k)}}q⟩
-  ```
+```math
+  p^{(k+1)} \in \operatorname*{argmin}_{q\in \mathcal M} f(q) - ⟨X^{(k)}, \log_{p^{(k)}}q⟩
+```
 
 until the `stopping_criterion` is fulfilled.
 
@@ -40,16 +42,16 @@ end
     difference_of_convex!(M, cost, f, gradf, ∂g, p; kwargs...)
 
 Run the difference of convex algorithm and perform the steps in place of `p`.
-See ∞`difference_of_convex`](@ref) for more details.
+See [`difference_of_convex`](@ref) for more details.
 """
 function difference_of_convex!(
     M::AbstractManifold,
     q,
     cost,
-    f,
-    grad_f,
     ∂g,
     p;
+    f=nothing,
+    grad_f=nothing,
     initial_vector = zero_vector(M, p),
     evaluation::AbstractEvaluationType = MutatingEvaluation(),
     subtask = (
