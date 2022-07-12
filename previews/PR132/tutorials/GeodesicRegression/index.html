@@ -188,14 +188,14 @@ end</code></pre>
 <pre id='var-m' class='code-output documenter-example-output'>ProductRepr with 2 submanifold components:
  Component 1 =
   3-element Vector{Float64}:
-    0.8572615656077154
-   -0.3739581282671239
-    0.3539179656852103
+   0.6771639692026696
+   0.35927049210297146
+   0.6421632754352855
  Component 2 =
   3-element Vector{Float64}:
-   -0.4682597025220977
-   -0.8520690584997722
-    0.2339041909441294</pre>
+    0.6551783695615557
+   -0.6916376615105478
+   -0.3039385616187624</pre>
 
 
 <div class="markdown"><p>The optimal “time labels” are then just the projections <span class="tex">$t_i &#61; ⟨d_i,X^*⟩$</span>, <span class="tex">$i&#61;1,\ldots,n$</span>.</p>
@@ -203,13 +203,13 @@ end</code></pre>
 
 <pre class='language-julia'><code class='language-julia'>t = map(d -&gt; inner(S, m, pca1, log(S, m, d)), data)</code></pre>
 <pre id='var-t' class='code-output documenter-example-output'>7-element Vector{Float64}:
-  0.4428897911817104
- -0.11766380900626
- -0.1925243197004743
- -0.028811903895712993
- -0.8335391279168133
-  1.0777180794489603
- -0.3359151535261359</pre>
+  0.24749659596952245
+  0.7162984503737784
+  0.037622849094384736
+  0.5388149185941601
+  0.6477142022950766
+ -1.3776253403479575
+ -0.8358265570372567</pre>
 
 
 <div class="markdown"><p>And we can call the gradient descent. Note that since <code>gradF&#33;</code> works in place of <code>Y</code>, we have to set the <code>evalutation</code> type accordingly.</p>
@@ -236,7 +236,7 @@ end</code></pre>
     )
 end</code></pre>
 <pre id="plutouiterminal">
-Initial  | F(x): 0.259203
+Initial  | F(x): 0.145063
 The algorithm computed a step size (9.99473445704817e-10) less than 1.0e-9.
 </pre>
 
@@ -255,20 +255,20 @@ The algorithm computed a step size (9.99473445704817e-10) less than 1.0e-9.
     )
 end</code></pre>
 <pre id='var-geo_pts' class='code-output documenter-example-output'>100-element Vector{Vector{Float64}}:
- [0.8486691617936258, -0.31623744520587993, 0.4239746832891822]
- [0.8490872013514038, -0.3168978476691373, 0.4226424950758131]
- [0.8495032153149339, -0.31755749413647766, 0.421309298600624]
- [0.8499172026917675, -0.31821638303423927, 0.41997509704410707]
- [0.8503291624942905, -0.3188745127905675, 0.41863989358915205]
- [0.8507390937397258, -0.3195318818354189, 0.4173036914210389]
- [0.8511469954501358, -0.32018848860056487, 0.4159664937274302]
+ [0.8835678757324947, -0.10437030826396004, 0.456524531352317]
+ [0.8839466370737444, -0.1037895123109958, 0.45592332682180636]
+ [0.8843246539277516, -0.10320862894328886, 0.4553217382985453]
+ [0.8847019259761387, -0.10262765865007722, 0.4547197662892103]
+ [0.8850784529011556, -0.10204660192067205, 0.45411741130080086]
+ [0.8854542343856797, -0.10146545924445734, 0.45351467384063904]
+ [0.8858292701132161, -0.10088423111088941, 0.45291155441636893]
  ⋮
- [0.8789928391312423, -0.3748055921687795, 0.29477509534390467]
- [0.8792167894398822, -0.3753883059844515, 0.2933623303990295]
- [0.8794386422767095, -0.37597012426855486, 0.29194886560489486]
- [0.8796583971124688, -0.3765510456330958, 0.2905347043334823]
- [0.8798760534229102, -0.3771310686922203, 0.2891198499584343]
- [0.8800916106887896, -0.37771019206221723, 0.28770430585504747]</pre>
+ [0.9158765386828869, -0.049459178849695015, 0.3984017513989721]
+ [0.9161840114677597, -0.04887231292379864, 0.39776670821012927]
+ [0.9164907126140748, -0.048285405836126234, 0.39713133000984185]
+ [0.9167966418635187, -0.047698458080989166, 0.39649561733324523]
+ [0.9171017989584282, -0.04711147015273298, 0.3958595707157561]
+ [0.9174061836417909, -0.04652444254573713, 0.3952231906930728]</pre>
 
 <pre class='language-julia'><code class='language-julia'>render_asy && asymptote_export_S2_signals(
     image_prefix * "/regression_result1.asy";
@@ -302,7 +302,7 @@ end</code></pre>
     log(S, geo_pts[highlighted], geo_pts[highlighted + 1]),
     log(S, geo_pts[highlighted], data[highlighted]),
 )</code></pre>
-<pre id='var-hash123107' class='code-output documenter-example-output'>0.004737926211780381</pre>
+<pre id='var-hash123107' class='code-output documenter-example-output'>0.00016805901801265465</pre>
 
 
 <div class="markdown"><p>But we also started with one of the best scenarios, i.e. equally spaced points on a geodesic obstructed by noise</p>
@@ -320,14 +320,14 @@ end</code></pre>
     x1 = ProductRepr(m, pca2)
     t2 = map(d -&gt; inner(S, m2, pca2, log(S, m2, d)), data2)
 end</code></pre>
-<pre id='var-anon1101795090521558771' class='code-output documenter-example-output'>7-element Vector{Float64}:
-  0.4960421782431147
-  0.5011175139710061
-  0.4249548638537591
- -0.026001110735921658
- -0.5910681055136894
- -0.4475919394980719
- -0.37291235353361607</pre>
+<pre id='var-anon11698505204539444113' class='code-output documenter-example-output'>7-element Vector{Float64}:
+ -0.3295974103550017
+ -0.838158346384058
+ -0.737727684634214
+  0.20989141242465875
+  0.5184929337591236
+  0.36545840327568646
+  0.8313008491792027</pre>
 
 <pre class='language-julia'><code class='language-julia'>with_terminal() do
     global y2 = gradient_descent(
@@ -350,7 +350,7 @@ end</code></pre>
     )
 end</code></pre>
 <pre id="plutouiterminal">
-Initial  | F(x): 1.230543
+Initial  | F(x): 0.277328
 The algorithm computed a step size (9.99473445704817e-10) less than 1.0e-9.
 </pre>
 
@@ -364,20 +364,20 @@ The algorithm computed a step size (9.99473445704817e-10) less than 1.0e-9.
     )
 end</code></pre>
 <pre id='var-geo2' class='code-output documenter-example-output'>100-element Vector{Vector{Float64}}:
- [0.7634818585127894, 0.20991099522478202, 0.6107641327104911]
- [0.7632827342836862, 0.2084911348290783, 0.6114989078012344]
- [0.7630816289172759, 0.20707073328453574, 0.612232095716944]
- [0.7628785429355371, 0.20564979427787522, 0.6129636945545952]
- [0.7626734768655896, 0.20422832149721284, 0.6136937024152878]
- [0.7624664312396922, 0.20280631863205006, 0.6144221174042509]
- [0.7622574065952415, 0.20138378937326415, 0.6151489376308482]
+ [0.5833864722690445, 0.1473862275362292, 0.7987099122373014]
+ [0.5835976307604981, 0.14637437377783924, 0.7987417280146806]
+ [0.5838081651245276, 0.1453623634796416, 0.7987726895791721]
+ [0.5840180751359769, 0.1443501977239288, 0.798802796897664]
+ [0.5842273605703583, 0.14333787759315966, 0.7988320499379581]
+ [0.584436021203852, 0.14232540416995812, 0.7988604486687698]
+ [0.5846440568133061, 0.14131277853711205, 0.7988879930597281]
  ⋮
- [0.7361901888254224, 0.0745766652388434, 0.6726531995605478]
- [0.7358078034483824, 0.07312220913341738, 0.6732310293769259]
- [0.735423508246549, 0.0716675632357558, 0.6738071117895587]
- [0.7350373042173791, 0.07021273132146252, 0.6743814453031963]
- [0.7346491923632839, 0.0687577171666243, 0.6749540284271285]
- [0.7342591736916265, 0.06730252454780083, 0.6755248596751878]</pre>
+ [0.6004791775219934, 0.051733256889816184, 0.79796517937444]
+ [0.6006307740760506, 0.05071143783676539, 0.7979166769189197]
+ [0.6007817282866192, 0.04968956455045967, 0.797867321132861]
+ [0.6009320399922617, 0.04866763812373957, 0.7978171120690474]
+ [0.6010817090322272, 0.04764565964950239, 0.7977660497811749]
+ [0.6012307352464528, 0.04662363022070122, 0.797714134323852]</pre>
 
 <pre class='language-julia'><code class='language-julia'>render_asy && asymptote_export_S2_signals(
     image_prefix * "/regression_result2.asy";
@@ -520,7 +520,7 @@ end;</code></pre>
     )
 end</code></pre>
 <pre id="plutouiterminal">
-Initial  | F(x): 1.230543
+Initial  | F(x): 0.277328
 The algorithm reached approximately critical point after 0 iterations; the gradient norm (0.0) is less than 1.0e-9.
 </pre>
 
@@ -574,4 +574,4 @@ end;</code></pre>
 </div>
 </div>
 
-<!-- PlutoStaticHTML.End --></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../HowToRecord/">« Record values</a><a class="docs-footer-nextpage" href="../Bezier/">Use Bezier Curves »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.20 on <span class="colophon-date" title="Tuesday 12 July 2022 15:57">Tuesday 12 July 2022</span>. Using Julia version 1.7.3.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+<!-- PlutoStaticHTML.End --></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../HowToRecord/">« Record values</a><a class="docs-footer-nextpage" href="../Bezier/">Use Bezier Curves »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.20 on <span class="colophon-date" title="Tuesday 12 July 2022 16:05">Tuesday 12 July 2022</span>. Using Julia version 1.7.3.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
