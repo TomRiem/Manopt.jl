@@ -114,11 +114,11 @@
     )
 end</code></pre>
 <pre id="plutouiterminal">
-Initial F(x): 11.780726, 
-# 50    F(x): 0.019713, |gradF(x)|:0.06416132710864002
-# 100   F(x): 0.012131, |gradF(x)|:0.04635565621539823
-# 150   F(x): 0.012107, |gradF(x)|:0.0015983535082903933
-# 200   F(x): 0.012104, |gradF(x)|:0.00015870810838196947
+Initial F(x): 16.179371, 
+# 50    F(x): 0.290057, |gradF(x)|:0.012658080434169112
+# 100   F(x): 0.290026, |gradF(x)|:0.0004308699283610126
+# 150   F(x): 0.290023, |gradF(x)|:6.588626954789808e-5
+# 200   F(x): 0.030389, |gradF(x)|:0.20970638017549256
 The algorithm reached its maximal number of iterations (200).
 </pre>
 
@@ -130,27 +130,27 @@ The algorithm reached its maximal number of iterations (200).
 </div>
 
 <pre class='language-julia'><code class='language-julia'>t = minimum(eigvals(A))</code></pre>
-<pre id='var-t' class='code-output documenter-example-output'>0.012104377273925814</pre>
+<pre id='var-t' class='code-output documenter-example-output'>0.2900256265407643</pre>
 
 
 <div class="markdown"><p>Compared to the cost at <code>xopt</code>, i.e.</p>
 </div>
 
 <pre class='language-julia'><code class='language-julia'>v = f(M, xopt)</code></pre>
-<pre id='var-v' class='code-output documenter-example-output'>0.012104399743863915</pre>
+<pre id='var-v' class='code-output documenter-example-output'>0.03038908340756926</pre>
 
 
 <div class="markdown"><p>which is a good approximation of the original eigenvalue:</p>
 </div>
 
 <pre class='language-julia'><code class='language-julia'>v - t</code></pre>
-<pre id='var-hash409042' class='code-output documenter-example-output'>2.24699381011495e-8</pre>
+<pre id='var-hash409042' class='code-output documenter-example-output'>-0.25963654313319506</pre>
 
 
 <div class="markdown"><p>And we can also check whether <code>xopt</code> is a point on the sphere:</p>
 </div>
 
 <pre class='language-julia'><code class='language-julia'>is_point(M, xopt)</code></pre>
-<pre id='var-hash536685' class='code-output documenter-example-output'>true</pre>
+<pre id='var-hash536685' class='code-output documenter-example-output'>false</pre>
 
-<!-- PlutoStaticHTML.End --></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../robustPCA/">« Robust PCA</a><a class="docs-footer-nextpage" href="../../plans/">Specify a Solver »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.20 on <span class="colophon-date" title="Tuesday 12 July 2022 18:12">Tuesday 12 July 2022</span>. Using Julia version 1.7.3.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+<!-- PlutoStaticHTML.End --></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../robustPCA/">« Robust PCA</a><a class="docs-footer-nextpage" href="../../plans/">Specify a Solver »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.20 on <span class="colophon-date" title="Wednesday 13 July 2022 10:31">Wednesday 13 July 2022</span>. Using Julia version 1.7.3.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
