@@ -115,14 +115,14 @@ end</code></pre>
  0.7071067811865475</pre>
 
 <pre class='language-julia'><code class='language-julia'>@benchmark stochastic_gradient_descent($M, $gradF, $x)</code></pre>
-<pre id='var-hash286483' class='code-output documenter-example-output'>BenchmarkTools.Trial: 4428 samples with 1 evaluation.
- Range (min … max):  910.894 μs … 14.574 ms  ┊ GC (min … max):  0.00% … 90.66%
- Time  (median):     942.693 μs              ┊ GC (median):     0.00%
- Time  (mean ± σ):     1.121 ms ±  1.260 ms  ┊ GC (mean ± σ):  10.53% ±  8.68%
+<pre id='var-hash286483' class='code-output documenter-example-output'>BenchmarkTools.Trial: 4610 samples with 1 evaluation.
+ Range (min … max):  832.116 μs … 19.338 ms  ┊ GC (min … max):  0.00% … 93.72%
+ Time  (median):     863.506 μs              ┊ GC (median):     0.00%
+ Time  (mean ± σ):     1.081 ms ±  1.687 ms  ┊ GC (mean ± σ):  14.54% ±  8.81%
 
-    ██▄                                                         
-  ▂▅███▇▅▄▄▄▄▃▃▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▁▂▂▂▁▁▁▁▂▂▂▁▂▁▂▁▁▁▂▁▁▂▂▄▆▅▃▂▂▂ ▃
-  911 μs          Histogram: frequency by time         1.34 ms <
+  ▄█▇▆▅▄▄▄▄▄▄▃▂▁▁                                    ▃▃▃▂▁     ▂
+  ████████████████▇▆▆██▇▆▇▇▇▇▆▆▇▆▃▄▃▃▄▄▁▁▃▄▁▁▄▃▃▁▃▄▃▇█████▇█▇▆ █
+  832 μs        Histogram: log(frequency) by time      1.34 ms <
 
  Memory estimate: 861.52 KiB, allocs estimate: 10031.</pre>
 
@@ -133,14 +133,14 @@ end</code></pre>
  0.7071067811865475</pre>
 
 <pre class='language-julia'><code class='language-julia'>@benchmark stochastic_gradient_descent($M, $gradf, $x)</code></pre>
-<pre id='var-hash614762' class='code-output documenter-example-output'>BenchmarkTools.Trial: 10000 samples with 6 evaluations.
- Range (min … max):  4.800 μs … 776.194 μs  ┊ GC (min … max):  0.00% … 97.65%
- Time  (median):     5.583 μs               ┊ GC (median):     0.00%
- Time  (mean ± σ):   7.552 μs ±  34.947 μs  ┊ GC (mean ± σ):  22.94% ±  4.91%
+<pre id='var-hash614762' class='code-output documenter-example-output'>BenchmarkTools.Trial: 10000 samples with 4 evaluations.
+ Range (min … max):   6.100 μs …  1.792 ms  ┊ GC (min … max):  0.00% … 98.94%
+ Time  (median):      8.650 μs              ┊ GC (median):     0.00%
+ Time  (mean ± σ):   12.440 μs ± 64.470 μs  ┊ GC (mean ± σ):  21.10% ±  4.06%
 
-  ▂▆██▆▃                                                      ▂
-  ███████▆▆█▇▇▅▅▃▁▁▁▁▃▁▁▁▁▁▁▁▁▁▁▁▄▃▁▁▁▁▁▁▁▁▁▁▃▁▁▁▁▁▁▁▁▁▁▁▁▄▆█ █
-  4.8 μs       Histogram: log(frequency) by time      20.8 μs <
+      ▁▄▅█▇▄▁                                                  
+  ▂▃▄▆███████▅▄▃▂▂▂▂▂▂▂▂▂▂▂▂▁▁▂▁▁▁▂▁▁▁▂▁▁▂▂▁▁▁▁▁▁▁▁▁▂▂▂▃▃▃▃▃▃ ▃
+  6.1 μs          Histogram: frequency by time        25.2 μs <
 
  Memory estimate: 41.08 KiB, allocs estimate: 26.</pre>
 
@@ -167,14 +167,14 @@ end</code></pre>
 
 
 <pre class='language-julia'><code class='language-julia'>@benchmark stochastic_gradient_descent($M, $gradf, $x; direction=$MG)</code></pre>
-<pre id='var-hash157926' class='code-output documenter-example-output'>BenchmarkTools.Trial: 10000 samples with 6 evaluations.
- Range (min … max):  4.617 μs … 767.911 μs  ┊ GC (min … max):  0.00% … 97.15%
- Time  (median):     5.483 μs               ┊ GC (median):     0.00%
- Time  (mean ± σ):   7.559 μs ±  36.095 μs  ┊ GC (mean ± σ):  23.69% ±  4.92%
+<pre id='var-hash157926' class='code-output documenter-example-output'>BenchmarkTools.Trial: 10000 samples with 4 evaluations.
+ Range (min … max):   5.525 μs …  1.684 ms  ┊ GC (min … max):  0.00% … 98.01%
+ Time  (median):      8.275 μs              ┊ GC (median):     0.00%
+ Time  (mean ± σ):   10.911 μs ± 56.742 μs  ┊ GC (mean ± σ):  21.18% ±  4.06%
 
-   ▆██▆▄▁                                                     ▂
-  ███████▇▇█▇▇▆▅▅▃▄▁▁▁▁▁▃▁▁▁▁▁▁▁▁▁▁▁▁▃▁▁▄▁▁▁▁▁▁▁▁▁▁▁▁▃▁▁▁▄▆██ █
-  4.62 μs      Histogram: log(frequency) by time      20.9 μs <
+       ▂▄▆█▆▃                                                  
+  ▂▂▃▄▆███████▅▃▃▂▂▂▂▂▂▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▂▁▁▁▁▁▁▁▁▁▁▁▂▁▁▁▁▁▂▂▂▂▂ ▃
+  5.53 μs         Histogram: frequency by time        24.9 μs <
 
  Memory estimate: 40.98 KiB, allocs estimate: 24.</pre>
 
@@ -191,14 +191,14 @@ end</code></pre>
 
 
 <pre class='language-julia'><code class='language-julia'>@benchmark stochastic_gradient_descent($M, $gradf, $x; direction=$AG)</code></pre>
-<pre id='var-hash164953' class='code-output documenter-example-output'>BenchmarkTools.Trial: 10000 samples with 6 evaluations.
- Range (min … max):  4.650 μs … 761.744 μs  ┊ GC (min … max):  0.00% … 98.63%
- Time  (median):     5.450 μs               ┊ GC (median):     0.00%
- Time  (mean ± σ):   7.570 μs ±  36.409 μs  ┊ GC (mean ± σ):  23.85% ±  4.92%
+<pre id='var-hash164953' class='code-output documenter-example-output'>BenchmarkTools.Trial: 10000 samples with 4 evaluations.
+ Range (min … max):   4.900 μs …  1.570 ms  ┊ GC (min … max):  0.00% … 98.88%
+ Time  (median):      8.125 μs              ┊ GC (median):     0.00%
+ Time  (mean ± σ):   10.360 μs ± 53.379 μs  ┊ GC (mean ± σ):  21.06% ±  4.07%
 
-  ▂▆██▅▂                                                    ▁ ▂
-  ███████▇▇█▇▇▅▅▅▄▄▃▃▃▁▁▁▁▁▁▁▁▁▃▁▁▃▁▁▃▁▁▁▁▁▁▃▁▁▁▁▁▃▁▁▁▁▁▁▁▅██ █
-  4.65 μs      Histogram: log(frequency) by time        21 μs <
+                        ▁▂▃▅▅▅▆▇▆██▇█▅▆▅▄▃▂▂                   
+  ▂▂▂▁▁▂▂▂▂▂▂▂▂▃▃▃▄▄▅▆▇▇█████████████████████▇▆▆▅▄▄▃▃▃▃▂▃▂▂▂▂ ▅
+  4.9 μs          Histogram: frequency by time        10.8 μs <
 
  Memory estimate: 40.98 KiB, allocs estimate: 24.</pre>
 
@@ -214,7 +214,7 @@ end</code></pre>
 <pre class='language-julia'><code class='language-julia'>x_opt5 = gradient_descent(M, F, fullGradF, x; stepsize=ArmijoLinesearch())</code></pre>
 <pre id='var-x_opt5' class='code-output documenter-example-output'>3-element Vector{Float64}:
   0.7071067811865475
- -2.450991179222844e-16
+ -4.886637652164662e-17
   0.7071067811865475</pre>
 
 <pre class='language-julia'><code class='language-julia'>AL = ArmijoLinesearch();</code></pre>
@@ -222,14 +222,14 @@ end</code></pre>
 
 <pre class='language-julia'><code class='language-julia'>@benchmark gradient_descent($M, $F, $fullGradF, $x; stepsize=$AL)</code></pre>
 <pre id='var-hash139796' class='code-output documenter-example-output'>BenchmarkTools.Trial: 6 samples with 1 evaluation.
- Range (min … max):  946.127 ms … 972.939 ms  ┊ GC (min … max): 11.16% … 12.53%
- Time  (median):     968.379 ms               ┊ GC (median):    11.70%
- Time  (mean ± σ):   962.004 ms ±  12.253 ms  ┊ GC (mean ± σ):  11.79% ±  0.77%
+ Range (min … max):  941.680 ms … 997.556 ms  ┊ GC (min … max): 14.34% … 15.53%
+ Time  (median):     968.618 ms               ┊ GC (median):    15.06%
+ Time  (mean ± σ):   965.935 ms ±  19.851 ms  ┊ GC (mean ± σ):  15.09% ±  0.91%
 
-  ██                                              █   ██      █  
-  ██▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁█▁▁▁██▁▁▁▁▁▁█ ▁
-  946 ms           Histogram: frequency by time          973 ms <
+  █     █                    █   ██                           █  
+  █▁▁▁▁▁█▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁█▁▁▁██▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁█ ▁
+  942 ms           Histogram: frequency by time          998 ms <
 
  Memory estimate: 711.53 MiB, allocs estimate: 9034671.</pre>
 
-<!-- PlutoStaticHTML.End --></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../SecondOrderDifference/">« Compute a second order difference</a><a class="docs-footer-nextpage" href="../Benchmark/">speed up! using <code>gradF!</code> »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.20 on <span class="colophon-date" title="Wednesday 13 July 2022 10:31">Wednesday 13 July 2022</span>. Using Julia version 1.7.3.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+<!-- PlutoStaticHTML.End --></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../SecondOrderDifference/">« Compute a second order difference</a><a class="docs-footer-nextpage" href="../Benchmark/">speed up! using <code>gradF!</code> »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.20 on <span class="colophon-date" title="Wednesday 13 July 2022 10:35">Wednesday 13 July 2022</span>. Using Julia version 1.7.3.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
